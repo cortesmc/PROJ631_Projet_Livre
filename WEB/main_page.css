@@ -4,10 +4,17 @@
     box-sizing: border-box;
 }
 
+header{
+    position: fixed;
+    width: 100%;
+}
 #fond{
-    background-color: rgb(255, 235, 205);
+    background: rgb(255, 235, 205);
     padding-left: 100px;
     padding-right: 20px;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+    z-index:100;
+
 
 }
 
@@ -62,7 +69,11 @@ input {
     padding-right: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
+}
+
+i{
+    font-size: 18px;
+}
   
   
   

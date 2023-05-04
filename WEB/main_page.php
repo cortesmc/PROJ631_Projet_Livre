@@ -27,24 +27,24 @@
             echo "</div>";
 
             echo "<div>";
-            echo "<div class='cliquable_avec_hover'><a href=\"?page=1\" class=\"btn_menu $encours[1]\">Home</a></div>\n";
-            echo "<div class='cliquable_avec_hover'><a href=\"?page=2\" class=\"btn_menu $encours[2]\">Genres</a></div> \n";   
-            echo "<div class='cliquable_avec_hover'><a href=\"?page=3\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
+            echo "<div class='cliquable_avec_hover'><a href=\"?page=0\" class=\"btn_menu $encours[1]\">Home</a></div>\n";
+            echo "<div class='cliquable_avec_hover'><a href=\"?page=1\" class=\"btn_menu $encours[2]\">Genres</a></div> \n";   
+            echo "<div class='cliquable_avec_hover'><a href=\"?page=2\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
             echo "</div>";
             
             echo "<div>";
-            echo "<div><form action='\"?page=4\"'>
+            echo "<div><form action='\"?page=3\"'>
                     <input type='text' value='Recherche'>
                     <button type='submit' name='submit'>
-                        <i class='fa-sharp fa-light fa-magnifying-glass'></i>loupe
+                        <i class='fa-sharp fa-light fa-magnifying-glass'></i>esp
                     </button>
                     </form>
                     </div> \n"; 
             echo "</div>";
             
             echo "<div >";
-            echo "<div class='cliquable_avec_hover'><a href=\"?page=5\" class=\"btn_menu $encours[5]\">Sign in</a></div> \n"; 
-            echo "<div class='cliquable_avec_hover'><a href=\"?page=6\" class=\"btn_menu $encours[6]\">sign up</a></div> \n"; 
+            echo "<div class='cliquable_avec_hover'><a href=\"?page=4\" class=\"btn_menu $encours[5]\">Sign in</a></div> \n"; 
+            echo "<div class='cliquable_avec_hover'><a href=\"?page=5\" class=\"btn_menu $encours[6]\">sign up</a></div> \n"; 
             echo "</div>";
 
             ?>
@@ -55,6 +55,9 @@
         <?php
             if( file_exists("page_".$page.".php") ){ 
                 include("page_".$page.".php");
+            }
+            else if ( file_exists("page_livre.php") ){
+                include("page_livre.php");
             }
         ?>
     </div>
