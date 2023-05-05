@@ -60,7 +60,7 @@ CREATE TABLE Own (
     idUser      integer,
     idBook      integer,
 
-    CONSTRAINT PK_AUTHOR_BOOK PRIMARY KEY  (idUser, idBook)
+    CONSTRAINT PK_USER_BOOK PRIMARY KEY  (idUser, idBook)
        
 ) ;
 
