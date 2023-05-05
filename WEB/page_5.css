@@ -1,18 +1,27 @@
-#content{
-    display:flex; 
+body{
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.container{
+    display:inline-block; 
     flex-direction: column; 
     justify-content: center; 
     align-items: center;
-    margin : 50px;
+    margin : 150px;
     margin-left: auto;
     margin-right: auto;
     width: 400px;
-    background-color:blue;
+    background-color:rgb(255, 211, 122);
+    padding: 5px;
+    border-radius: 5%;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
 }
 
 #title{
-    font-size: 50px;
-    margin: 20px;
+    font-weight: bold;
+    font-size: 40px;
+    margin: 30px;
 }
 
 form{
@@ -30,8 +39,14 @@ span.form_el {
     font-size: 25px;
 }
 
+input.form_el{
+    width: 200px;
+    font-size: 20px;
+}
+
 button.form_el {  
     font-size: 25px;
-    width: 200px;
-    margin: 20px;
+    height: 40px;
+    width: 250px;
+    margin: 30px;
 }
