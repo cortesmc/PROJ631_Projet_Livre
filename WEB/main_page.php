@@ -10,12 +10,12 @@
 </head>
 
 <?php   
-    $conn = @mysqli_connect("tp-epua:3308", "lebonmat", "yxr5ryhf");    
+    $conn = @mysqli_connect("tp-epua:3308", "femathie", "fq4q2vk2");    
     if (mysqli_connect_errno()) {
         $msg = "erreur ". mysqli_connect_error();
     } else {  
         $msg = "connecté au serveur " . mysqli_get_host_info($conn);
-        mysqli_select_db($conn, "lebonmat");
+        mysqli_select_db($conn, "femathie");
         mysqli_query($conn, "SET NAMES UTF8");
     }
     
@@ -79,6 +79,18 @@
             }
         ?>
     </div>
+    
+    <footer class="footer-distributed">
+        <div class="footer-left">
+            <p class="footer-links">
+                <a class="link-1" href="?page=0">Home</a>
+                <a href="?page=2">Bilio</a>
+                <a href="?page=4">Sign in</a>
+                <a href="?page=5">Sign out</a>
+            </p>
+            <p>PROJ631 2023</p>
+        </div>
+    </footer>
 </body>
 </html>  
   
