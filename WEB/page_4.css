@@ -1,0 +1,43 @@
+#content{
+    display:flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    margin : 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    background-color:rgb(255, 211, 122);
+}
+
+#title{
+    font-size: 50px;
+    margin: 20px;
+}
+
+form{
+    display:flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.form_el{
+    margin : 5px;
+}
+
+span.form_el {
+    font-size: 25px;
+}
+
+input.form_el{
+    width: 200px;
+    font-size: 20px;
+}
+
+button.form_el {  
+    font-size: 25px;
+    height: 40px;
+    width: 250px;
+    margin: 30px;
+}
