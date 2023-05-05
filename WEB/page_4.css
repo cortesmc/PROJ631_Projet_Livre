@@ -1,13 +1,21 @@
+body{
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+}
+
 #content{
-    display:flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
-    margin : 50px;
+    display:inline-block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    padding: 10px;
+    text-align: center;
     width: 400px;
     background-color:rgb(255, 211, 122);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
 }
 
 #title{
@@ -25,6 +33,7 @@ form{
 .form_el{
     margin : 5px;
 }
+
 
 span.form_el {
     font-size: 25px;
