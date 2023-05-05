@@ -56,7 +56,7 @@
                 
             echo "<div>";
                 echo "<div><form action='\"?page=3\"'>
-                        <input type='text' value='Recherche'>
+                        <input type='text' placeholder='Rechercher'>
                         <button type='submit' name='submit'>
                             <i class='fa-sharp fa-light fa-magnifying-glass'></i>esp
                         </button>
