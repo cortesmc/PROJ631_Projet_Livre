@@ -41,13 +41,13 @@
             echo "<div>";
                 echo "<div class='cliquable_avec_hover'><a href=\"?page=0\" class=\"btn_menu $encours[1]\">Home</a></div>\n";
                 echo "<div class='cliquable_avec_hover'>
-                        <a href=\"?page=1\" class=\"btn_menu $encours[2]\">Genres</a>
+                        <a href=\"?page=1\" class=\"btn_menu $encours[2]\"  onclick='return false;'>Genres</a>
                         <div class='hover-box'>
-                            <a class='genres'>Genres 1</a>
-                            <a class='genres'>Genres 2</a>
-                            <a class='genres'>Genres 3</a>
-                            <a class='genres'>Genres 4</a>
-                            <a class='genres'>Genres 5</a>
+                            <a href=\"?page=1\" class='genres'>Genres 1</a>
+                            <a href=\"?page=1\" class='genres'>Genres 2</a>
+                            <a href=\"?page=1\" class='genres'>Genres 3</a>
+                            <a href=\"?page=1\" class='genres'>Genres 4</a>
+                            <a href=\"?page=1\" class='genres'>Genres 5</a>
                         </div>
                     </div> \n";   
 

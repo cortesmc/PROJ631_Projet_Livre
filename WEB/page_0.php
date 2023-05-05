@@ -18,9 +18,9 @@
         <H2>Liens utiles :</H2>
 
         <div class="liens">
-            <a href="?page=4">Se connecter</a>
-            <a href="?page=5">Créer un compte</a>
-            <a href="?page=2">Ma bibliothéque</a>
+            <a href="?page=4" class='liens_utiles'>Se connecter</a>
+            <a href="?page=5" class='liens_utiles'>Créer un compte</a>
+            <a href="?page=2" class='liens_utiles'>Ma bibliothéque</a>
         </div>
         
     </div>

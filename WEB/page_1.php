@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="page_2.css" />
+    <link rel="stylesheet" href="page_1.css" />
     <script src="https://kit.fontawesome.com/2556c3713e.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
-    <h1>Ma bibliothéque</h1>
+    <h1>Le nom du genre</h1>
 	<div class="galerie">
         <?php   
             for ($i = 0; $i < 39; $i++){

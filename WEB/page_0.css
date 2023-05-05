@@ -1,5 +1,6 @@
 *{
     font-family: Arial, sans-serif;
+    text-decoration: none;
 }
 
 h1{
@@ -32,11 +33,11 @@ h2{
     text-decoration: none;
 }
 
-a{
+.liens_utiles{
     text-decoration: none;
     color: black;
 }
 
-a:hover{
+.liens_utiles:hover{
     text-decoration: underline;
 }
