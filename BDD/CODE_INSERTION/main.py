@@ -25,25 +25,25 @@ for book in data:
 
     values_book = (title, resume, thumbnail, str(year))
 
-    # Insertion du livre
+    # Inserting book
     crx.execute("insert into Book (title, resume, thumbnail, year) \
                  values (%s, %s, %s, %s)", values_book)
     conn.commit()
 
-    # Récupération de l'id du livre
+    # collect book id's
     idBook = None
     crx.execute("SELECT idBook FROM Book WHERE title = %s", (title,))
     result1 = crx.fetchall()
     if result1:
         idBook = result1[0][0]
 
-    # Insertion des genres du livre
+    # Inserting genres of book
     for genre in book['genre']:
         # Insertion du genre
         crx.execute("insert into Genre (libele) SELECT %s FROM DUAL WHERE NOT EXISTS (SELECT libele FROM Genre WHERE libele = %s)", (genre, genre))
         conn.commit()
 
-        # Récupération de l'id du genre inséré
+        # collect genre id's
         idGenre = None
         crx.execute("SELECT idGenre FROM Genre WHERE libele = %s", (genre,))
         result2 = crx.fetchall()
@@ -52,31 +52,31 @@ for book in data:
 
         
         #Check if ids already exist if not its add it 
-        # Insertion des ids des tables dans Belong
+        # Inserting ids in Belong
         crx.execute("insert ignore into Belong (idBook, idGenre) values (%s, %s)", (idBook, idGenre))
         conn.commit()
 
-    # Insertion des auteurs du livre
+    # Inserting authors
     for author in book['author']:
         # Insertion de l'auteur
         crx.execute("insert into Author (name) SELECT %s FROM DUAL WHERE NOT EXISTS (SELECT name FROM Author WHERE name = %s)", (author, author))
         conn.commit()
 
-        # Récupération de l'id de l'auteur inséré
+        # collect author id's
         idAuthor = None
         crx.execute("SELECT idAuthor FROM Author WHERE name = %s", (author,))
         result3 = crx.fetchall()
         if result3:
             idAuthor = result3[0][0]
 
-        # Insertion des ids des tables dans IsWrite
+        # Inserting ids in IsWrite 
         crx.execute("insert ignore into IsWrite (idAuthor, idBook) values (%s, %s)", (idAuthor, idBook))
         conn.commit()
 
     print(i)
 
-    if i >= 74:
-        break
+    # if i >= 74:
+    #     break
 
     i += 1
 
