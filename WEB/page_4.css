@@ -23,7 +23,7 @@ body{
     margin: 20px;
 }
 
-form{
+.formulaire{
     display:flex; 
     flex-direction: column; 
     justify-content: center; 

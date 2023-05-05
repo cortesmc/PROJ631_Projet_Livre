@@ -9,10 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Le nom du genre</h1>
+    <?php $genre=$_GET["genre"] ;
+    ?>
+    <H1>Mettre le genre ici</H1>
 	<div class="galerie">
         <?php   
-            for ($i = 0; $i < 39; $i++){
+            for ($i = 0; $i < 29; $i++){
                 echo "<div class='item'>
                         <div>
                         <a href='?page=livre'>
