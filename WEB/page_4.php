@@ -11,7 +11,7 @@
     <div id="content">
         <span id="title">Connexion</span>
         <div>
-            <form action="" >
+            <form action="" class='formulaire'>
                 <span class="form_el">Username</span>
                 <input type="text" class="form_el">
                 <span class="form_el">Mot de passe</span>

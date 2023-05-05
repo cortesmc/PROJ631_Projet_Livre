@@ -12,7 +12,7 @@
     <h1>Ma bibliothéque</h1>
 	<div class="galerie">
         <?php   
-            for ($i = 0; $i < 39; $i++){
+            for ($i = 0; $i < 29; $i++){
                 echo "<div class='item'>
                         <div>
                         <a href='?page=livre'>
