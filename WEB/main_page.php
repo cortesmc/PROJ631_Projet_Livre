@@ -36,7 +36,7 @@
             echo "<div><form action='\"?page=3\"'>
                     <input type='text' value='Recherche'>
                     <button type='submit' name='submit'>
-                        <i class='fa-sharp fa-light fa-magnifying-glass'></i>loupe
+                        <i class='fa-sharp fa-light fa-magnifying-glass'></i>esp
                     </button>
                     </form>
                     </div> \n"; 
@@ -55,6 +55,9 @@
         <?php
             if( file_exists("page_".$page.".php") ){ 
                 include("page_".$page.".php");
+            }
+            else if ( file_exists("page_livre.php") ){
+                include("page_livre.php");
             }
         ?>
     </div>

@@ -1,0 +1,52 @@
+*{
+    font-family: Arial, sans-serif;
+}
+
+h1{
+    font-family: Arial, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h2{
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.container {
+    position: relative;
+    min-width: 32rem;
+    margin: 0 auto;
+    width: 70%;
+    max-width: 126rem;
+    padding-top: 100px;
+    display: flex;
+}
+
+.image-container {
+    position: fixed;
+}
+
+.image-container img {
+    width: 25%;
+    border-radius: 5%;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
+
+}
+
+
+.image-container h2{
+    padding: 10px;
+}
+
+.text-container {
+    margin-left: 35%;
+    width: 65%;
+}
+
+.text-container p {
+    margin-top: 0;
+    line-height: 1.5;
+}
