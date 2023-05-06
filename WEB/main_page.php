@@ -21,6 +21,42 @@
     
 ?> 
 
+<?php
+    if (isset($_POST['Ajouter'])){
+        if (isset($_POST['username']) && isset($_POST['name']) && isset($_POST['prenom']) && isset($_POST['mdp'])) {
+            // Code PHP pour insérer les données dans la base de données
+            if (($_POST['username'] != null)&&($_POST['name'] != null)&&($_POST['prenom'] != null)&&($_POST['mdp'] != null)) {
+                // Insérer les données dans la base de données
+                $username = $_POST['username'];
+                $name = $_POST['name'];
+                $prenom = $_POST['prenom'];
+                $mdp = $_POST['mdp'];
+                // Code pour insérer les données dans la base de données ici
+
+                $sql = "INSERT INTO utilisateur (username,lastname,firstname,password) VALUES ('$username','$name','$prenom','$mdp')";
+                    
+                mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error($conn)."\n".$sql);
+                
+                // Génération de la chaîne de requête GET
+                $query_string = http_build_query(array('user' => $username));
+
+                // Redirection vers la nouvelle URL avec l'information en GET
+                header('Location: main_page.php?page=0&' . $query_string);
+                exit();
+
+                }
+                else{
+                    header('Location: main_page.php?page=5&compte=erreur');
+                }
+
+
+                
+        }
+    }
+    
+
+?>
+
 <body>
     <header id="fond">        
         <div id="menu">
@@ -38,7 +74,45 @@
     
             $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
 
+            if (isset($_GET['user'])){
+                $user=$_GET['user'];
+                echo "<div>";
+                echo "<div><a href=\"?page=0&user=$user\" class=\"btn_menu $encours[0]\">Titre</a></div>\n";
+            echo "</div>";
+
             echo "<div>";
+                echo "<div class='cliquable_avec_hover'><a href=\"?page=0&user=$user\" class=\"btn_menu $encours[1]\">Home</a></div>\n";
+                echo "<div class='cliquable_avec_hover'>
+                        <a href=\"?page=1&user=$user\" class=\"btn_menu $encours[2]\"  onclick='return false;'>Genres</a>
+                        <div class='hover-box'>";
+                        while ($row = mysqli_fetch_assoc($result)){
+                            $genre=$row["libele"];
+                            echo "<a href=\"?page=1&&user=$user&genre=$genre\" class='genres'>$genre</a>";
+                        }
+                        echo "</div>
+                    </div> \n";   
+
+                echo "<div class='cliquable_avec_hover'><a href=\"?page=2&user=$user\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
+            echo "</div>";
+                
+            echo "<div>";
+                echo "<div><form action='\"?page=3&user=$user\"'>
+                        <input type='text' placeholder='Rechercher'>
+                        <button type='submit' name='submit'>
+                            <i class='fa-sharp fa-light fa-magnifying-glass'></i>esp
+                        </button>
+                        </form>
+                        </div> \n"; 
+            echo "</div>";
+                
+            echo "<div >";
+                    echo "<div class='cliquable_avec_hover'><a href=\"?page=6&user=$user\" class=\"btn_menu $encours[5]\">$user</a></div> \n";
+
+            echo "</div>";
+            }
+
+            else{
+                echo "<div>";
                 echo "<div><a href=\"?page=0\" class=\"btn_menu $encours[0]\">Titre</a></div>\n";
             echo "</div>";
 
@@ -68,9 +142,11 @@
             echo "</div>";
                 
             echo "<div >";
-                echo "<div class='cliquable_avec_hover'><a href=\"?page=4\" class=\"btn_menu $encours[5]\">Sign in</a></div> \n"; 
-                echo "<div class='cliquable_avec_hover'><a href=\"?page=5\" class=\"btn_menu $encours[6]\">sign up</a></div> \n"; 
+                    echo "<div class='cliquable_avec_hover'><a href=\"?page=4\" class=\"btn_menu $encours[5]\">Sign in</a></div> \n"; 
+                    echo "<div class='cliquable_avec_hover'><a href=\"?page=5\" class=\"btn_menu $encours[6]\">sign up</a></div> \n"; 
+
             echo "</div>";
+            }
 
             ?>
         </div>
