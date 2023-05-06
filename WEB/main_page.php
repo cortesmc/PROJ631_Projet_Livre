@@ -10,12 +10,12 @@
 </head>
 
 <?php   
-    $conn = @mysqli_connect("tp-epua:3308", "femathie", "fq4q2vk2");    
+    $conn = @mysqli_connect("localhost", "root", "", "proj631_livres");    
     if (mysqli_connect_errno()) {
         $msg = "erreur ". mysqli_connect_error();
     } else {  
         $msg = "connecté au serveur " . mysqli_get_host_info($conn);
-        mysqli_select_db($conn, "femathie");
+        mysqli_select_db($conn, "root");
         mysqli_query($conn, "SET NAMES UTF8");
     }
     
@@ -34,6 +34,10 @@
             }
             $encours[$page] = "encours";
 
+            $sql = "SELECT libele FROM genre";
+    
+            $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+
             echo "<div>";
                 echo "<div><a href=\"?page=0\" class=\"btn_menu $encours[0]\">Titre</a></div>\n";
             echo "</div>";
@@ -42,13 +46,12 @@
                 echo "<div class='cliquable_avec_hover'><a href=\"?page=0\" class=\"btn_menu $encours[1]\">Home</a></div>\n";
                 echo "<div class='cliquable_avec_hover'>
                         <a href=\"?page=1\" class=\"btn_menu $encours[2]\"  onclick='return false;'>Genres</a>
-                        <div class='hover-box'>
-                            <a href=\"?page=1\" class='genres'>Genres 1</a>
-                            <a href=\"?page=1\" class='genres'>Genres 2</a>
-                            <a href=\"?page=1\" class='genres'>Genres 3</a>
-                            <a href=\"?page=1\" class='genres'>Genres 4</a>
-                            <a href=\"?page=1\" class='genres'>Genres 5</a>
-                        </div>
+                        <div class='hover-box'>";
+                        while ($row = mysqli_fetch_assoc($result)){
+                            $genre=$row["libele"];
+                            echo "<a href=\"?page=1&genre=$genre\" class='genres'>$genre</a>";
+                        }
+                        echo "</div>
                     </div> \n";   
 
                 echo "<div class='cliquable_avec_hover'><a href=\"?page=2\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  

@@ -10,20 +10,27 @@
 </head>
 <body>
     <?php $genre=$_GET["genre"] ;
+    echo"<H1>$genre</H1>";
     ?>
-    <H1>Mettre le genre ici</H1>
+    
 	<div class="galerie">
         <?php   
-            for ($i = 0; $i < 29; $i++){
+            $sql="SELECT * FROM book JOIN belong ON book.idBook = belong.idBook JOIN genre ON belong.idGenre= genre.idGenre WHERE genre.libele = '$genre'";
+            $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+            while ($row = mysqli_fetch_assoc($result)){
+                $thumbnail=$row["thumbnail"];
+                $title=$row["title"];
+                $idBook=$row["idBook"];
+                $idGenre=$row["idGenre"];
                 echo "<div class='item'>
                         <div>
                         <a href='?page=livre'>
-                            <img src='livre.jpg' alt='Votre image'>
+                            <img src='$thumbnail' alt='Votre image'>
                         </a>
                         </div>
                         <div class='overlay'>
-                            <a href='?page=livre'></a>
-                            <p class='titre'>Harry Potter à l'école des sorciers</p>
+                            <a href='?page=livre&book=$idBook'></a>
+                            <p class='titre'>$title</p>
                         </div>
                 </div>";
             }

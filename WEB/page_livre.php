@@ -9,13 +9,25 @@
     <title>Document</title>
 </head>
 <body>
+    <?php 
+
+        $idBook=$_GET["book"] ;
+        $sql="SELECT * FROM book WHERE idBook='$idBook'";
+        $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+        while ($row = mysqli_fetch_assoc($result)){
+            $thumbnail=$row["thumbnail"];
+            $title=$row["title"];
+        }
+    ?>
+    <?php ?>
+
 	<div class="container">
 		<div class="image-container">
-			<img src="livre.jpg" alt="Image">
+            <?php echo"<img src=$thumbnail alt='Image'>";?>
             <h2>Mettre la note ici</h2>
 		</div>
 		<div class="text-container">
-            <H1>Titre</H1>
+            <?php echo"<H1>$title</H1>";?>
             <H2>Auteur</H2>
             <p>Note</p>
             <br>
