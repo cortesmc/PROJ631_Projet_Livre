@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="page_1.css" />
     <script src="https://kit.fontawesome.com/2556c3713e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-GFDV7zEa6G8V7U5m6HF5BYBx/zIw2zE6yyTP3q4i4erFOlHz85Xzjq+NCO3Mq/gM"
+        crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    <?php $txt=$_POST["text"] ;
+    <?php $txt=$_POST["search"] ;
     echo"<H1>Recherche pour '$txt'</H1>";
     ?>
     

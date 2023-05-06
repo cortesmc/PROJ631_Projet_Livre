@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main_page.css" />
-    <script src="https://kit.fontawesome.com/2556c3713e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-GFDV7zEa6G8V7U5m6HF5BYBx/zIw2zE6yyTP3q4i4erFOlHz85Xzjq+NCO3Mq/gM"
+        crossorigin="anonymous">
     <title>Document</title>
 </head>
 
@@ -127,12 +129,15 @@
             echo "</div>";
                 
             echo "<div>";
-                echo "<div><form action='?page=3&user=$user' method='POST'>
-                        <input type='text' placeholder='Rechercher' name='text'>
-                        <input type='submit' name='submit' class='button_recherche' value='   '>
-                        </input>
-                        </form>
-                        </div> \n"; 
+                echo "
+                        <form method='post' action='?page=3&user=$user'>
+                            <div class='recherche'>
+                            <input type='text' name='search' placeholder='Rechercher...'>
+                                <button type='submit'>
+                                <i class='fa fa-search'></i>
+                                </button>
+                            </div>
+                        </form>"; 
             echo "</div>";
                 
             echo "<div >";
@@ -162,12 +167,15 @@
             echo "</div>";
                 
             echo "<div>";
-                echo "<div><form action='\"?page=3\"' method='POST'>
-                        <input type='text' placeholder='Rechercher' name='text'>
-                        <input type='submit' name='submit' class='button_recherche' value='   '>
-                        </input>
-                        </form>
-                        </div> \n"; 
+                echo "
+                        <form method='post' action='?page=3'>
+                            <div style='position: relative;'>
+                            <input type='text' name='search' placeholder='Rechercher...'>
+                                <button type='submit' style='position: absolute; top: 50%; transform: translateY(-50%); right: 5px;'>
+                                <i class='fa fa-search'></i>
+                                </button>
+                            </div>
+                        </form>"; 
             echo "</div>";
                 
             echo "<div >";

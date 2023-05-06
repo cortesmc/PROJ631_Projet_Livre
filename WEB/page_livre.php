@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="page_livre.css" />
     <script src="https://kit.fontawesome.com/2556c3713e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-GFDV7zEa6G8V7U5m6HF5BYBx/zIw2zE6yyTP3q4i4erFOlHz85Xzjq+NCO3Mq/gM"
+        crossorigin="anonymous">
     <title>Document</title>
 </head>
 
@@ -37,7 +40,16 @@
 	<div class="container">
 		<div class="image-container">
             <?php echo"<img src=$thumbnail alt='Image'>";?>
-            <h2>Mettre ma note ici</h2>
+                <div class='rating'>
+                    <div class='stars'>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                    </div>
+                    <p class='note'>Mettez une note</p>
+                </div>
             <?php 
                 if(isset($_GET["user"])){
                     $user=$_GET["user"];
@@ -47,6 +59,7 @@
 
 
                     if((mysqli_fetch_assoc($result))==null){
+
                         echo"<form action='?page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Ajouter à ma Bibliotéque'></button></form>";
                     }
                 }
