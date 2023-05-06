@@ -9,16 +9,27 @@
 </head>
 <body>
     <div id="content">
-        <span id="title">Connexion</span>
         <div>
-            <form action="" class='formulaire'>
-                <span class="form_el">Username</span>
-                <input type="text" class="form_el">
-                <span class="form_el">Mot de passe</span>
-                <input type="password" class="form_el">
-                <button class="form_el" id="connexion">Connexion</button>
+            <form method="POST" action="?page=0" class='formulaire'>
+                <?php 
+                if (isset($_GET['compte'])){
+                    if ($_GET['compte']=="erreur"){
+                        echo"<H2 class='erreur'>Erreur de connexion</H2>";
+                    }
+                }
+                ?>
+
+                <label id="title">Connexion</label><br>
+
+                <label for="username" class="form_el">Username</label><br>
+                <input type="text" id="username" name="username" class="form_el"><br>
+
+                <label for="mdp" class="form_el">Mot de passe</label><br>
+                <input type="text" id="mdp" name="mdp" class="form_el"><br>
+
+                <input type="hidden" name="page" value="5">
+                <input type="submit" value="Connexion" name="Connexion" class="button">
             </form>
         </div>
-        
     </div>
 </body>

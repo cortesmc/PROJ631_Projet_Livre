@@ -47,14 +47,45 @@
                 }
                 else{
                     header('Location: main_page.php?page=5&compte=erreur');
-                }
-
-
-                
+                }                
         }
     }
-    
+?>
+<?php
+    if (isset($_POST['Connexion'])){
+        if (isset($_POST['username'])&&isset($_POST['mdp'])) {
+            // Code PHP pour insérer les données dans la base de données
+            if (($_POST['username'] != null)&&($_POST['mdp'] != null)) {
+                // Insérer les données dans la base de données
+                $username = $_POST['username'];
+                $mdp = $_POST['mdp'];
+                // Code pour insérer les données dans la base de données ici
 
+                $sql = "SELECT * FROM utilisateur WHERE username='$username' AND password='$mdp'";
+
+                $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+
+                while ($row = mysqli_fetch_assoc($result)){
+                    $user=$row["username"];
+                    $pasword=$row["password"];
+                }
+
+                if (($user==null)&&($pasword==null)){
+                    header('Location: main_page.php?page=4&compte=erreur');
+                }
+                else{
+                    // Génération de la chaîne de requête GET
+                    $query_string = http_build_query(array('user' => $user));
+
+                    // Redirection vers la nouvelle URL avec l'information en GET
+                    header('Location: main_page.php?page=0&' . $query_string);
+                    exit();
+                }
+            }else{
+                header('Location: main_page.php?page=4&compte=erreur');
+            }                
+        }
+    }
 ?>
 
 <body>
@@ -128,7 +159,7 @@
                         echo "</div>
                     </div> \n";   
 
-                echo "<div class='cliquable_avec_hover'><a href=\"?page=2\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
+                echo "<div class='cliquable_avec_hover'><a href=\"?page=4\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
             echo "</div>";
                 
             echo "<div>";

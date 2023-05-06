@@ -35,7 +35,7 @@ body{
 }
 
 
-span.form_el {
+label {
     font-size: 25px;
 }
 
@@ -44,9 +44,13 @@ input.form_el{
     font-size: 20px;
 }
 
-button.form_el {  
+.button {  
     font-size: 25px;
     height: 40px;
     width: 250px;
     margin: 30px;
+}
+
+h2{
+    color: red;
 }

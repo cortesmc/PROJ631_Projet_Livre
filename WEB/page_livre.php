@@ -20,13 +20,19 @@
             $author=$row["name"];
         }
     ?>
-    <?php ?>
+    
 
 	<div class="container">
 		<div class="image-container">
             <?php echo"<img src=$thumbnail alt='Image'>";?>
             <h2>Mettre ma note ici</h2>
-            <button type='submit' name='submit' class='aujout_liste'>Ajouter à ma Bibliotéque</button>
+            <?php 
+                if(isset($_GET["user"])){
+                    echo"<button type='submit' name='submit' class='aujout_liste'>Ajouter à ma Bibliotéque</button>";
+                }
+                
+            ?>
+            
 		</div>
 		<div class="text-container">
             <?php echo"<H1>$title</H1>";?>

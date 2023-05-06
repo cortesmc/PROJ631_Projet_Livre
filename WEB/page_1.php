@@ -22,15 +22,22 @@
                 $title=$row["title"];
                 $idBook=$row["idBook"];
                 $idGenre=$row["idGenre"];
+
                 echo "<div class='item'>
                         <div>
                         <a href='?page=livre'>
                             <img src='$thumbnail' alt='Votre image'>
                         </a>
                         </div>
-                        <div class='overlay'>
-                            <a href='?page=livre&book=$idBook'></a>
-                            <p class='titre'>$title</p>
+                        <div class='overlay'>";
+                            if (isset($_GET['user'])){
+                                $user=$_GET['user'];
+                                echo"<a href='?page=livre&user=$user&book=$idBook'></a>";
+                            }
+                            else{
+                                echo"<a href='?page=livre&book=$idBook'></a>";
+                            };
+                            echo"<p class='titre'>$title</p>
                         </div>
                 </div>";
             }
