@@ -38,7 +38,7 @@
             <input type="text" id="prenom" name="prenom" class="form_el"><br>
 
             <label for="mdp" class="form_el">Mot de passe</label><br>
-            <input type="text" id="mdp" name="mdp" class="form_el"><br>
+            <input type="password" id="mdp" name="mdp" class="form_el"><br>
 
             <input type="hidden" name="page" value="5">
             <input type="submit" value="Créer" name="Ajouter" class="button">

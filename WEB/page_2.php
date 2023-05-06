@@ -9,19 +9,34 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Ma bibliothéque</h1>
+    <?php $user=$_GET["user"] ;
+    echo"<H1>La bibliotéque de $user</H1>";
+    ?>
+    
 	<div class="galerie">
         <?php   
-            for ($i = 0; $i < 29; $i++){
+            $sql="SELECT * FROM book JOIN own ON book.idBook= own.idBook JOIN utilisateur ON utilisateur.idUser=own.idUser WHERE utilisateur.username='$user'";
+            $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+            while ($row = mysqli_fetch_assoc($result)){
+                $thumbnail=$row["thumbnail"];
+                $title=$row["title"];
+                $idBook=$row["idBook"];
+
                 echo "<div class='item'>
                         <div>
                         <a href='?page=livre'>
-                            <img src='livre.jpg' alt='Votre image'>
+                            <img src='$thumbnail' alt='Votre image'>
                         </a>
                         </div>
-                        <div class='overlay'>
-                            <a href='?page=livre'></a>
-                            <p class='titre'>Harry Potter à l'école des sorciers</p>
+                        <div class='overlay'>";
+                            if (isset($_GET['user'])){
+                                $user=$_GET['user'];
+                                echo"<a href='?page=livre&user=$user&book=$idBook'></a>";
+                            }
+                            else{
+                                echo"<a href='?page=livre&book=$idBook'></a>";
+                            };
+                            echo"<p class='titre'>$title</p>
                         </div>
                 </div>";
             }

@@ -18,9 +18,20 @@
         <H2>Liens utiles :</H2>
 
         <div class="liens">
-            <a href="?page=4" class='liens_utiles'>Se connecter</a>
-            <a href="?page=5" class='liens_utiles'>Créer un compte</a>
-            <a href="?page=2" class='liens_utiles'>Ma bibliothéque</a>
+            <?php
+                if (isset($_GET["user"])){
+                    $user=$_GET["user"];
+                    echo"<a href='?page=4' class='liens_utiles'>Se deconnecter</a>";
+                    echo"<a href='?page=5' class='liens_utiles'>Créer un compte</a>";
+                    echo"<a href='?page=2&user=$user' class='liens_utiles'>Ma bibliothéque</a>";
+                }
+                else{
+                    echo"<a href='?page=4' class='liens_utiles'>Se connecter</a>";
+                    echo"<a href='?page=5' class='liens_utiles'>Créer un compte</a>";
+                    echo"<a href='?page=4' class='liens_utiles'>Ma bibliothéque</a>";
+                }
+
+            ?>
         </div>
         
     </div>

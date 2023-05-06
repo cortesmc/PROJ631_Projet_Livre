@@ -137,7 +137,7 @@
             echo "</div>";
                 
             echo "<div >";
-                    echo "<div class='cliquable_avec_hover'><a href=\"?page=6&user=$user\" class=\"btn_menu $encours[5]\">$user</a></div> \n";
+                    echo "<div><a href=\"?page=6&user=$user\" class=\"btn_menu $encours[5]\" onclick='return false;'>$user</a></div> \n";
 
             echo "</div>";
             }
@@ -193,10 +193,19 @@
     <footer class="footer-distributed">
         <div class="footer-left">
             <p class="footer-links">
-                <a class="link-1" href="?page=0">Home</a>
-                <a href="?page=2">Bilio</a>
-                <a href="?page=4">Sign in</a>
-                <a href="?page=5">Sign out</a>
+                <?php
+                if (isset($_GET["user"])){
+                    $user=$_GET["user"];
+                    echo"<a class='link-1' href='?page=0&user=$user'>Home</a>";
+                    echo"<a href='?page=2&user=$user'>Bilio</a>";
+                    echo"<a href='?page=6&user=$user'>$user</a>";
+                }else{
+                    echo"<a class='link-1' href='?page=0'>Home</a>";
+                    echo"<a href='?page=2'>Bilio</a>";
+                    echo"<a href='?page=4'>Sign in</a>";
+                    echo"<a href='?page=5'>Sign out</a>";
+                }
+                ?>
             </p>
             <p>PROJ631 2023</p>
         </div>

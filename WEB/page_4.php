@@ -25,7 +25,7 @@
                 <input type="text" id="username" name="username" class="form_el"><br>
 
                 <label for="mdp" class="form_el">Mot de passe</label><br>
-                <input type="text" id="mdp" name="mdp" class="form_el"><br>
+                <input type="password" id="mdp" name="mdp" class="form_el"><br>
 
                 <input type="hidden" name="page" value="5">
                 <input type="submit" value="Connexion" name="Connexion" class="button">

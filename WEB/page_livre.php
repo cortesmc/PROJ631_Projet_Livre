@@ -8,6 +8,18 @@
     <script src="https://kit.fontawesome.com/2556c3713e.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+
+<?php
+    if (isset($_POST["submit"])){
+        $user=$_GET["user"];
+        $book=$_GET["book"];
+        $sql="INSERT INTO own (idUser,idBook) VALUES ((SELECT idUser FROM utilisateur WHERE username='$user'),'$book')";
+        mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+    }
+?>
+
+
+
 <body>
     <?php 
 
@@ -28,9 +40,16 @@
             <h2>Mettre ma note ici</h2>
             <?php 
                 if(isset($_GET["user"])){
-                    echo"<button type='submit' name='submit' class='aujout_liste'>Ajouter à ma Bibliotéque</button>";
+                    $user=$_GET["user"];
+                    $book=$_GET["book"];
+                    $sql="SELECT * FROM own WHERE ((SELECT idUser FROM utilisateur WHERE username='$user')=own.idUser) AND (own.idBook='$book')";
+                    $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+
+
+                    if((mysqli_fetch_assoc($result))==null){
+                        echo"<form action='?page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Ajouter à ma Bibliotéque'></button></form>";
+                    }
                 }
-                
             ?>
             
 		</div>
