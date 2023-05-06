@@ -127,11 +127,10 @@
             echo "</div>";
                 
             echo "<div>";
-                echo "<div><form action='\"?page=3&user=$user\"'>
-                        <input type='text' placeholder='Rechercher'>
-                        <button type='submit' name='submit'>
-                            <i class='fa-sharp fa-light fa-magnifying-glass'></i>esp
-                        </button>
+                echo "<div><form action='?page=3&user=$user' method='POST'>
+                        <input type='text' placeholder='Rechercher' name='text'>
+                        <input type='submit' name='submit' class='button_recherche' value='   '>
+                        </input>
                         </form>
                         </div> \n"; 
             echo "</div>";
@@ -163,11 +162,10 @@
             echo "</div>";
                 
             echo "<div>";
-                echo "<div><form action='\"?page=3\"'>
-                        <input type='text' placeholder='Rechercher'>
-                        <button type='submit' name='submit'>
-                            <i class='fa-sharp fa-light fa-magnifying-glass'></i>esp
-                        </button>
+                echo "<div><form action='\"?page=3\"' method='POST'>
+                        <input type='text' placeholder='Rechercher' name='text'>
+                        <input type='submit' name='submit' class='button_recherche' value='   '>
+                        </input>
                         </form>
                         </div> \n"; 
             echo "</div>";

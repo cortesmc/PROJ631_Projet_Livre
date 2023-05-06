@@ -1,0 +1,93 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+h1 {
+    color: #000000;
+    text-align: center;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 100px;
+}
+
+.galerie {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 70px auto 0;
+    position: relative;
+    min-width: 32rem;
+    margin: 0 auto;
+    width: 70%;
+    max-width: 126rem;
+    padding-top: 80px;
+    display: flex;
+}
+
+.item {
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+}
+
+.texte{
+    display: flex;
+}
+
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: rgb(255, 221, 170);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item:hover{
+    opacity: 1;
+
+}
+
+.item:hover .overlay {
+    opacity: 1;
+}
+
+
+.overlay a {
+    width: 100%;
+    height: 100%;
+    color: rgb(20, 20, 20);
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.titre{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
