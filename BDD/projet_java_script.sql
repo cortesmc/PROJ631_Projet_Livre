@@ -190,7 +190,11 @@ CREATE TABLE Review (
     idReview      integer auto_increment,
     note          int,
     descr         varchar(200),
-    CONSTRAINT PK_REVIEW PRIMARY KEY  (idReview)
+    idBook        int,
+    idUser        int,
+    CONSTRAINT PK_REVIEW PRIMARY KEY  (idReview),
+    CONSTRAINT FK_REVIEW_BOOK FOREIGN KEY (idBook) REFERENCES Book(idBook),
+    CONSTRAINT FK_REVIEW_USER FOREIGN KEY (idUser) REFERENCES Utilisateur(idUser)
 ) ;
 
 ---------------- FOREIGN KEY
@@ -206,4 +210,8 @@ ALTER TABLE Own ADD FOREIGN KEY (idBook) REFERENCES Book(idBook);
 ALTER TABLE Belong ADD FOREIGN KEY (idBook) REFERENCES Book(idBook);
 
 ALTER TABLE Belong ADD FOREIGN KEY (idGenre) REFERENCES Genre(idGenre);
+
+ALTER TABLE Review ADD FOREIGN KEY (idBook) REFERENCES Book(IdBook);
+
+ALTER TABLE Review ADD FOREIGN KEY (idUser) REFERENCES Utilisateur(IdUser);
 */
