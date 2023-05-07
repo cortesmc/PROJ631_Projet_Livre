@@ -204,4 +204,9 @@ button{
 .recherche{
   position: relative;
 }
+
+button{
+  background-color: transparent;
+  border: none;
+}
   

@@ -61,60 +61,51 @@ h2{
 
 
 
-
-
-
-
-
-/* Par défaut, une étoile est en gris,
-   avec un padding et un curseur en forme de main. */
-.fa-star {
-    color: gray;
-    cursor: pointer;
-    padding: 0.0625rem;
-    padding-top: 20px;
-}
-/* Si elle porte en plus la classe '.gold', elle sera en jaune. */
-.fa-star.gold {
-	color: #ffdc0f;
+.rating{
+    position: relative;
+    padding: 40px;
 }
 
-/* Le parent global '.rating' positionne le groupe des étoiles et le lien en colonne */
-.rating {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
 
-/* Le groupe '.stars' positionne les étoiles
-        les unes à côté des autres sans espacements. */
-.stars {
-    display: inline-flex;
-    justify-content: center;
-    font-size: 3em;
-}
-
-/**
-    * Et là opère la magie du ':hover' !
-    */
-
-/* A l'état :hover sur le parent '.rating',
-        on force TOUTES les étoiles à passer en jaune. */
-.stars:hover .fa-star {
-    color: #ffdc0f;
-}
-/* Et si la souris survole une étoile en particulier,
-        on sélectionne toutes les étoiles qui sont APRÈS celle-ci
-        grâce à l'opérateur '~' et on les force en GRIS */
-.stars .fa-star:hover ~ .fa-star {
-    color: gray;
-}
-
-.note{
-    padding: 10px;
+.note {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 5px;
     font-size: 20px;
 }
 
-/******************************************************************/
-/* style pour la démo */
-/******************************************************************/
+
+button{
+    background-color: transparent;
+    border: none;
+}
+
+.rating button {
+    float: right;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 4vw;
+    transition: color .4s;
+    position: absolute;
+    direction:rtl;
+ }
+
+ .rating form button:hover,
+ .rating form button:focus,
+ .rating form button:hover ~ button,
+ .rating form button:focus ~ button {
+    color: orange;
+    cursor: pointer; }
+
+ #btn1{
+    margin-right: 80%;
+ }
+ #btn2{
+    margin-right: 60%;
+ }
+ #btn3{
+    margin-right: 40%;
+ }
+ #btn4{
+    margin-right: 20%;
+ }

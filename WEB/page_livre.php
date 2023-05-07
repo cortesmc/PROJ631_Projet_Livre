@@ -40,16 +40,24 @@
 	<div class="container">
 		<div class="image-container">
             <?php echo"<img src=$thumbnail alt='Image'>";?>
-                <div class='rating'>
-                    <div class='stars'>
-                        <i class='fa fa-star'></i>
-                        <i class='fa fa-star'></i>
-                        <i class='fa fa-star'></i>
-                        <i class='fa fa-star'></i>
-                        <i class='fa fa-star'></i>
-                    </div>
-                    <p class='note'>Mettez une note</p>
-                </div>
+            <div class='rating'>
+                <form action="">
+                    <button name='btn5' id='btn5'>★</button>
+                </form>
+                <form action="">
+                    <button name='btn4' id='btn4'>★</button>
+                </form>
+                <form action="">
+                    <button name='btn3' id='btn3'>★</button>
+                </form>
+                <form action="">
+                    <button name='btn2' id='btn2'>★</button>
+                </form>
+                <form action="">
+                    <button name='btn1' id='btn1'>★</button>
+                </form>
+            </div>
+            <p class='note'>Votre note</p>
             <?php 
                 if(isset($_GET["user"])){
                     $user=$_GET["user"];
@@ -60,7 +68,7 @@
 
                     if((mysqli_fetch_assoc($result))==null){
 
-                        echo"<form action='?page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Ajouter à ma Bibliotéque'></button></form>";
+                        echo"<form action='?page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Ajouter à ma Bibliotéque'></form>";
                     }
                 }
             ?>
