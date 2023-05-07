@@ -88,6 +88,7 @@
         else{
             $sql="INSERT INTO review (note, descr,idBook,idUser) VALUES ('$nb_etoile','$texte','$book',(SELECT idUser FROM utilisateur WHERE username='$user'))";
             mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+            header('Location: main_page.php?page=livre&user='.$user.'&book='.$book.'&note=' . $nb_etoile);
         }
     }
 
@@ -262,6 +263,7 @@
             <?php echo"<H2>$author</H2>";?>
 
             <?php
+                $book=$_GET["book"];
                 $sql="SELECT ROUND(AVG(note),1) AS moyenne FROM review WHERE idBook=$book";
                 $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
                 $row = $row = mysqli_fetch_assoc($result);
