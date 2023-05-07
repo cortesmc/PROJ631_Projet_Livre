@@ -88,28 +88,118 @@ button{
     transition: color .4s;
     position: absolute;
     direction:rtl;
- }
+}
 
- .rating form button:hover,
- .rating form button:focus,
- .rating form button:hover ~ button,
- .rating form button:focus ~ button {
+.rating form button:hover,
+.rating form button:focus,
+.rating form button:hover ~ button,
+.rating form button:focus ~ button {
     color: orange;
     cursor: pointer; }
 
- #btn1{
+#btn1{
     margin-right: 80%;
- }
- #btn2{
+}
+#btn2{
     margin-right: 60%;
- }
- #btn3{
+}
+#btn3{
     margin-right: 40%;
- }
- #btn4{
+}
+#btn4{
     margin-right: 20%;
- }
+}
 
- button.note_true{
+button.note_true{
     color:orange;
- }
+}
+
+p.moyenne{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+span.petite_etoile{
+    color:orange;
+}
+
+span.petit_span{
+    font-size: 16px;
+}
+
+
+span.span_gros_com{
+    font-size: 16px;
+}
+
+.write_com{
+    margin: 20px;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+
+.commentaire_div{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+}
+
+
+span.user_com{
+    font-size: 18px;
+    font-weight: bold;
+    padding-right: 3px;
+}
+
+
+textarea {
+    resize: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    margin-right: 15px;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
+    width: 100%;
+  }
+
+
+.commentaire{
+    padding-bottom: 20px;
+}
+
+.votre_com{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.nb_etoile{
+    font-size: 18px;
+    padding: 10px;
+}
+
+label input.rbtn{
+    margin-top: 20px;
+}
+
+.add_com_div{
+    border: 2px solid black;
+    resize: none;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    padding-left: 5px;
+    background-color: #e2e2e2;
+}
+
+.send_com{
+    margin: 5px;
+    margin-left: 20px;
+    padding-left: 20px;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
+}

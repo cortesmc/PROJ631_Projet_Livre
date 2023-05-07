@@ -25,7 +25,15 @@
             $row = mysqli_fetch_assoc($result);
             $note= $row["note"];
             $query_string = http_build_query(array('note' => $note));
-            header('Location: main_page.php?page=livre&user='.$user.'&book='.$book.'&' . $query_string);
+
+            if (isset($_GET["com"])){
+                header('Location: main_page.php?page=livre&user='.$user.'&book='.$book.'&' . $query_string . '&com=true');
+            }
+            else{
+                header('Location: main_page.php?page=livre&user='.$user.'&book='.$book.'&' . $query_string);
+            }
+
+            
         }
     }
     
@@ -63,6 +71,27 @@
 
         
     }
+
+    else if (isset($_POST["send_com"])){
+        if(isset($_POST['options'])) {
+            $nb_etoile = $_POST['options'];
+        }
+        $texte=$_POST["message"];
+        
+        $sql="SELECT * FROM review WHERE (review.idUser=(SELECT idUser FROM utilisateur WHERE username='$user'))";
+        $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+        if (mysqli_num_rows($result) > 0){
+            $sql="UPDATE review SET note = '$nb_etoile', descr='$texte' WHERE (review.idUser=(SELECT idUser FROM utilisateur WHERE username='$user')) AND (review.idBook='$book')";
+            mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+            header('Location: main_page.php?page=livre&user='.$user.'&book='.$book.'&note=' . $nb_etoile);
+        }
+        else{
+            $sql="INSERT INTO review (note, descr,idBook,idUser) VALUES ('$nb_etoile','$texte','$book',(SELECT idUser FROM utilisateur WHERE username='$user'))";
+            mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+        }
+    }
+
+
 ?>
 
 
@@ -219,7 +248,6 @@
 
 
                     if((mysqli_fetch_assoc($result))==null){
-
                         echo"<form action='?page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Ajouter à ma Bibliotéque'></form>";
                     }
                     else{
@@ -232,16 +260,80 @@
 		<div class="text-container">
             <?php echo"<H1>$title</H1>";?>
             <?php echo"<H2>$author</H2>";?>
-            <p>Note</p>
-            <br>
-			<p>Nam pulvinar justo a enim eleifend, sit amet commodo nulla consectetur. Duis nec tempor justo. Sed consequat consequat nibh, sit amet commodo eros lacinia vel. Aenean vitae elementum velit. Aliquam interdum mi in nunc pharetra eleifend. Aenean eleifend, ex nec faucibus egestas, elit elit blandit elit, in fermentum nisi nibh a diam. Nunc bibendum lectus id erat maximus, eu dictum dolor tincidunt. Nulla commodo auctor erat vel dapibus. Morbi facilisis tincidunt nisi, sed aliquam elit dapibus vel. In hac habitasse platea dictumst. Integer auctor, mauris nec commodo hendrerit, quam turpis sollicitudin est, vel lacinia neque felis eu metus. Nullam consequat mi quis velit pharetra faucibus.</p>
+
+            <?php
+                $sql="SELECT ROUND(AVG(note),1) AS moyenne FROM review WHERE idBook=$book";
+                $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+                $row = $row = mysqli_fetch_assoc($result);
+                $moyenne=$row["moyenne"];
+
+                $sql="SELECT COUNT(note) AS nb_review FROM review WHERE idBook=$book";
+                $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+                $row = $row = mysqli_fetch_assoc($result);
+                $nb_review=$row["nb_review"];
+
+                $sql="SELECT COUNT(descr) AS nb_com FROM review WHERE idBook=$book";
+                $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+                $row = $row = mysqli_fetch_assoc($result);
+                $nb_com=$row["nb_com"];
+
+
+                echo"<p class='moyenne'>Note: <span class='petite_etoile'>★</span> ($moyenne)  <span class='petit_span'>($nb_review review) ($nb_com commentaire)</span></p>";
+                
+
+
+            echo"<br>";
+			echo"<p>Nam pulvinar justo a enim eleifend, sit amet commodo nulla consectetur. Duis nec tempor justo. Sed consequat consequat nibh, sit amet commodo eros lacinia vel. Aenean vitae elementum velit. Aliquam interdum mi in nunc pharetra eleifend. Aenean eleifend, ex nec faucibus egestas, elit elit blandit elit, in fermentum nisi nibh a diam. Nunc bibendum lectus id erat maximus, eu dictum dolor tincidunt. Nulla commodo auctor erat vel dapibus. Morbi facilisis tincidunt nisi, sed aliquam elit dapibus vel. In hac habitasse platea dictumst. Integer auctor, mauris nec commodo hendrerit, quam turpis sollicitudin est, vel lacinia neque felis eu metus. Nullam consequat mi quis velit pharetra faucibus.</p>
 			<p>Nam pulvinar justo a enim eleifend, sit amet commodo nulla consectetur. Duis nec tempor justo. Sed consequat consequat nibh, sit amet commodo eros lacinia vel. Aenean vitae elementum velit. Aliquam interdum mi in nunc pharetra eleifend. Aenean eleifend, ex nec faucibus egestas, elit elit blandit elit, in fermentum nisi nibh a diam. Nunc bibendum lectus id erat maximus, eu dictum dolor tincidunt. Nulla commodo auctor erat vel dapibus. Morbi facilisis tincidunt nisi, sed aliquam elit dapibus vel. In hac habitasse platea dictumst. Integer auctor, mauris nec commodo hendrerit, quam turpis sollicitudin est, vel lacinia neque felis eu metus. Nullam consequat mi quis velit pharetra faucibus.</p>
 			
             <br>
-            <H1>Commentaire</H1>
-            <p>Nam pulvinar justo a enim eleifend, sit amet commodo nulla consectetur. Duis nec tempor justo. Sed consequat consequat nibh, sit amet commodo eros lacinia vel. Aenean vitae elementum velit. Aliquam interdum mi in nunc pharetra eleifend. Aenean eleifend, ex nec faucibus egestas, elit elit blandit elit, in fermentum nisi nibh a diam. Nunc bibendum lectus id erat maximus, eu dictum dolor tincidunt. Nulla commodo auctor erat vel dapibus. Morbi facilisis tincidunt nisi, sed aliquam elit dapibus vel. In hac habitasse platea dictumst. Integer auctor, mauris nec commodo hendrerit, quam turpis sollicitudin est, vel lacinia neque felis eu metus. Nullam consequat mi quis velit pharetra faucibus.</p>
-			<p>Nam pulvinar justo a enim eleifend, sit amet commodo nulla consectetur. Duis nec tempor justo. Sed consequat consequat nibh, sit amet commodo eros lacinia vel. Aenean vitae elementum velit. Aliquam interdum mi in nunc pharetra eleifend. Aenean eleifend, ex nec faucibus egestas, elit elit blandit elit, in fermentum nisi nibh a diam. Nunc bibendum lectus id erat maximus, eu dictum dolor tincidunt. Nulla commodo auctor erat vel dapibus. Morbi facilisis tincidunt nisi, sed aliquam elit dapibus vel. In hac habitasse platea dictumst. Integer auctor, mauris nec commodo hendrerit, quam turpis sollicitudin est, vel lacinia neque felis eu metus. Nullam consequat mi quis velit pharetra faucibus.</p>
-		</div>
+            <H1 class='commentaire'>Commentaire <span class='span_gros_com'>($nb_com commentaires)</span></H1>";
+
+            if ((isset($_GET["user"]))&&(!isset($_GET["com"]))){
+                echo"<form action='?page=livre&user=$user&book=$book&com=true' method='POST'>
+                <input type='submit' name='write_com' class='write_com' value='Ecrire un commentaire'>
+                </form>";
+            }
+
+
+                        
+            if (isset($_GET["com"])){
+                echo"<form action='?page=livre&user=$user&book=$book' method='POST' class='add_com_div'>
+                    <label class='votre_com'>Votre commentaire</label><br>
+                    <label class='nb_etoile'>Nombre d'étoiles :</label>
+                    <label><input type='radio' name='options' value='1' class='rbtn'> 1</label>
+                    <label><input type='radio' name='options' value='2' class='rbtn'> 2</label>
+                    <label><input type='radio' name='options' value='3' class='rbtn'> 3</label>
+                    <label><input type='radio' name='options' value='4' class='rbtn'> 4</label>
+                    <label><input type='radio' name='options' value='5' class='rbtn'> 5</label>
+                    <br>
+                    <textarea id='message' name='message' rows='8' cols='80' resize='none'></textarea>
+                    <input type='submit' name='send_com' class='send_com' value='Publier'>
+                </form>";
+            }
+
+
+            
+            $sql="SELECT * FROM review JOIN utilisateur ON review.idUser=utilisateur.idUser WHERE review.idBook='$book'";
+            $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+            while ($row = mysqli_fetch_assoc($result)){
+                $user_com=$row["username"];
+                $note_com=$row["note"];
+                $description=$row["descr"];
+
+                echo"
+                    <div class='commentaire_div'>
+                        <p><span class='user_com'>$user_com   </span>($note_com <span class='petite_etoile'>★</span>)</p>
+                        <div>$description</div>
+                    </div>
+                ";
+            }
+
+
+            
+            ?>
+            
+        </div>
 	</div>
 </body>
 </html>
