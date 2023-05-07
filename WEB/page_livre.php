@@ -24,13 +24,8 @@
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
             $note= $row["note"];
-
-            // Génération de la chaîne de requête GET
             $query_string = http_build_query(array('note' => $note));
-
-            // Redirection vers la nouvelle URL avec l'information en GET
             header('Location: main_page.php?page=livre&user='.$user.'&book='.$book.'&' . $query_string);
-            exit;
         }
     }
     
@@ -42,8 +37,15 @@
         mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
     }
 
+    else if (isset($_POST["submit_none"])){
+        $user=$_GET["user"];
+        $book=$_GET["book"];
+        $sql="DELETE FROM own WHERE idUser=(SELECT idUser FROM utilisateur WHERE username='$user') AND idBook='$book'";
+        mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+    }
 
-    if (isset($_POST["btn"])){
+
+    else if (isset($_POST["btn"])){
         $note=$_GET["note"];
         $book=$_GET["book"];
 
@@ -219,6 +221,9 @@
                     if((mysqli_fetch_assoc($result))==null){
 
                         echo"<form action='?page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Ajouter à ma Bibliotéque'></form>";
+                    }
+                    else{
+                        echo"<form action='?page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit_none' class='aujout_liste' value='Retirer de ma Bibliotéque'></form>";
                     }
                 }
             ?>

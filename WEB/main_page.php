@@ -81,7 +81,6 @@
 
                     // Redirection vers la nouvelle URL avec l'information en GET
                     header('Location: main_page.php?page=0&' . $query_string);
-                    exit();
                 }
             }else{
                 header('Location: main_page.php?page=4&compte=erreur');
