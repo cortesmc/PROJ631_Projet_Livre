@@ -13,11 +13,53 @@
 </head>
 
 <?php
+    if((isset($_GET["user"]))&&(!isset($_GET["note"]))){
+        $user=$_GET["user"];
+        $book=$_GET["book"];
+
+
+        $sql="SELECT note FROM review WHERE (((SELECT idUser FROM utilisateur WHERE username='$user')=review.idUser) AND (review.idBook='$book'))";
+        $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_assoc($result);
+            $note= $row["note"];
+
+            // Génération de la chaîne de requête GET
+            $query_string = http_build_query(array('note' => $note));
+
+            // Redirection vers la nouvelle URL avec l'information en GET
+            header('Location: main_page.php?page=livre&user='.$user.'&book='.$book.'&' . $query_string);
+            exit;
+        }
+    }
+    
+
     if (isset($_POST["submit"])){
         $user=$_GET["user"];
         $book=$_GET["book"];
         $sql="INSERT INTO own (idUser,idBook) VALUES ((SELECT idUser FROM utilisateur WHERE username='$user'),'$book')";
         mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+    }
+
+
+    if (isset($_POST["btn"])){
+        $note=$_GET["note"];
+        $book=$_GET["book"];
+
+        $sql="SELECT * FROM review WHERE ((SELECT idUser FROM utilisateur WHERE username='$user')=review.idUser) AND (review.idBook='$book')";
+        $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+
+        if((mysqli_fetch_assoc($result))!=null){
+                $sql="UPDATE review SET note = '$note' WHERE (review.idUser=(SELECT idUser FROM utilisateur WHERE username='$user')) AND (review.idBook='$book')";
+                mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+        }
+        else{
+            $sql="INSERT INTO review (note, idBook,idUser) VALUES ('$note','$book',(SELECT idUser FROM utilisateur WHERE username='$user'))";
+            mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+        }
+
+        
     }
 ?>
 
@@ -40,28 +82,136 @@
 	<div class="container">
 		<div class="image-container">
             <?php echo"<img src=$thumbnail alt='Image'>";?>
-            <div class='rating'>
-                <form action="">
-                    <button name='btn5' id='btn5'>★</button>
-                </form>
-                <form action="">
-                    <button name='btn4' id='btn4'>★</button>
-                </form>
-                <form action="">
-                    <button name='btn3' id='btn3'>★</button>
-                </form>
-                <form action="">
-                    <button name='btn2' id='btn2'>★</button>
-                </form>
-                <form action="">
-                    <button name='btn1' id='btn1'>★</button>
-                </form>
-            </div>
-            <p class='note'>Votre note</p>
             <?php 
                 if(isset($_GET["user"])){
                     $user=$_GET["user"];
                     $book=$_GET["book"];
+
+
+                    echo"<div class='rating'>";
+                    if (isset($_GET["note"])){
+                        if ($_GET["note"]==1){
+                            echo"
+                            <form action='?page=livre&user=$user&book=$book&note=5' method='post'>
+                            <button name='btn' id='btn5'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=4' method='post'>
+                                <button name='btn' id='btn4'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=3' method='post'>
+                                <button name='btn' id='btn3'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=2' method='post'>
+                                <button name='btn' id='btn2'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=1' method='post'>
+                                <button name='btn' id='btn1' class='note_true'>★</button>
+                            </form>
+                            ";
+                        }
+                        if ($_GET["note"]==2){
+                            echo"
+                            <form action='?page=livre&user=$user&book=$book&note=5' method='post'>
+                            <button name='btn' id='btn5'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=4' method='post'>
+                                <button name='btn' id='btn4'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=3' method='post'>
+                                <button name='btn' id='btn3'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=2' method='post'>
+                                <button name='btn' id='btn2' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=1' method='post'>
+                                <button name='btn' id='btn1' class='note_true'>★</button>
+                            </form>
+                            ";
+                        }
+                        if ($_GET["note"]==3){
+                            echo"
+                            <form action='?page=livre&user=$user&book=$book&note=5' method='post'>
+                            <button name='btn' id='btn5'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=4' method='post'>
+                                <button name='btn' id='btn4'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=3' method='post'>
+                                <button name='btn' id='btn3' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=2' method='post'>
+                                <button name='btn' id='btn2' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=1' method='post'>
+                                <button name='btn' id='btn1' class='note_true'>★</button>
+                            </form>
+                            ";
+                        }
+                        if ($_GET["note"]==4){
+                            echo"
+                            <form action='?page=livre&user=$user&book=$book&note=5' method='post'>
+                            <button name='btn' id='btn5'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=4' method='post'>
+                                <button name='btn' id='btn4' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=3' method='post'>
+                                <button name='btn' id='btn3' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=2' method='post'>
+                                <button name='btn' id='btn2' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=1' method='post'>
+                                <button name='btn' id='btn1' class='note_true'>★</button>
+                            </form>
+                            ";
+                        }
+                        if ($_GET["note"]==5){
+                            echo"
+                            <form action='?page=livre&user=$user&book=$book&note=5' method='post'>
+                            <button name='btn' id='btn5' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=4' method='post'>
+                                <button name='btn' id='btn4' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=3' method='post'>
+                                <button name='btn' id='btn3' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=2' method='post'>
+                                <button name='btn' id='btn2' class='note_true'>★</button>
+                            </form>
+                            <form action='?page=livre&user=$user&book=$book&note=1' method='post'>
+                                <button name='btn' id='btn1' class='note_true'>★</button>
+                            </form>
+                            ";
+                        }
+                        
+                    }else{
+                        echo"
+                        <form action='?page=livre&user=$user&book=$book&note=5' method='post'>
+                            <button name='btn' id='btn5'>★</button>
+                        </form>
+                        <form action='?page=livre&user=$user&book=$book&note=4' method='post'>
+                            <button name='btn' id='btn4'>★</button>
+                        </form>
+                        <form action='?page=livre&user=$user&book=$book&note=3' method='post'>
+                            <button name='btn' id='btn3'>★</button>
+                        </form>
+                        <form action='?page=livre&user=$user&book=$book&note=2' method='post'>
+                            <button name='btn' id='btn2'>★</button>
+                        </form>
+                        <form action='?page=livre&user=$user&book=$book&note=1' method='post'>
+                            <button name='btn' id='btn1'>★</button>
+                        </form>
+                        ";
+                    }
+                echo"</div>";
+                echo"<p class='note'>Votre note</p>";
+
+
+
+
+
                     $sql="SELECT * FROM own WHERE ((SELECT idUser FROM utilisateur WHERE username='$user')=own.idUser) AND (own.idBook='$book')";
                     $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
 
