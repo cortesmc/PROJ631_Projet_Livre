@@ -4,7 +4,7 @@ body{
 
 }
 
-#content{
+.container{
     display:inline-block;
     margin-left: auto;
     margin-right: auto;
@@ -19,8 +19,10 @@ body{
 }
 
 #title{
-    font-size: 50px;
-    margin: 20px;
+    font-weight: bold;
+    font-size: 40px;
+    margin: 30px;
+    width: 100%;
 }
 
 .formulaire{
@@ -34,8 +36,7 @@ body{
     margin : 5px;
 }
 
-
-span.form_el {
+label {
     font-size: 25px;
 }
 
@@ -44,9 +45,13 @@ input.form_el{
     font-size: 20px;
 }
 
-button.form_el {  
+.button {  
     font-size: 25px;
     height: 40px;
     width: 250px;
     margin: 30px;
+}
+
+h2{
+    color: red;
 }

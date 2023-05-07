@@ -116,10 +116,6 @@ input {
     border-radius: 5px;
 }
 
-i{
-    font-size: 18px;
-}
-
 
 
 
@@ -198,7 +194,19 @@ i{
 }
 
 
+button{
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  right: 5px;
+}
 
-  
-  
+.recherche{
+  position: relative;
+}
+
+button{
+  background-color: transparent;
+  border: none;
+}
   
