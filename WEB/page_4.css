@@ -13,14 +13,16 @@ body{
     padding: 10px;
     text-align: center;
     width: 400px;
-    background-color:rgb(255, 211, 122);
+    background-color:rgb(241, 178, 133);
     border-radius: 10px;
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
+    padding: 20px;
 }
 
 #title{
+    color: bisque;
+    font-weight: bold;
     font-size: 50px;
-    margin: 20px;
 }
 
 form{
@@ -28,6 +30,7 @@ form{
     flex-direction: column; 
     justify-content: center; 
     align-items: center;
+    margin-top: 20px;
 }
 
 .form_el{
@@ -37,6 +40,8 @@ form{
 
 span.form_el {
     font-size: 25px;
+    color: rgb(90, 18, 18);
+    font-weight: bold;
 }
 
 input.form_el{
@@ -45,8 +50,20 @@ input.form_el{
 }
 
 button.form_el {  
+    box-shadow: 0px 0px 10px 1px rgb(144, 61, 31);
+    font-weight: bold;
+    color:bisque;
     font-size: 25px;
-    height: 40px;
+    height: 60px;
     width: 250px;
     margin: 30px;
+    background-color: rgb(90, 18, 18);
+    border: 0px;
+    border-radius: 30px;
+}
+
+#connexion:active {
+    color: bisque;
+    background-color: rgb(122, 31, 31);
+    box-shadow: 0px 0px 10px 1px rgb(60, 12, 12) inset;
 }

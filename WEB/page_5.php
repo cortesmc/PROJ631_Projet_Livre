@@ -12,15 +12,23 @@
 <span id="title">Creation d'un compte</span>
         <div>
             <form action="" >
-                <span class="form_el">Username</span>
-                <input type="text" class="form_el">
-                <span class="form_el">Nom</span>
-                <input type="text" class="form_el">
-                <span class="form_el">Prénom</span>
-                <input type="text" class="form_el">
-                <span class="form_el">Mot de passe</span>
-                <input type="password" class="form_el">
-                <button class="form_el">Créer</button>
+                <div class="ligne">
+                    <span class="form_el">Username</span>
+                    <input type="text" class="form_el">
+                </div>
+                <div class="ligne">
+                    <span class="form_el">Nom</span>
+                    <input type="text" class="form_el">
+                </div>
+                <div class="ligne">
+                    <span class="form_el">Prénom</span>
+                    <input type="text" class="form_el">
+                </div>
+                <div class="ligne">
+                    <span class="form_el">Mot de passe</span>
+                    <input type="password" class="form_el">
+                </div>
+                <button class="form_el" id="creation">Valider</button>
             </form>
         </div>
 </div>
