@@ -20,5 +20,7 @@ public class Main {
         Connection conn = ToolsBDD.connexionBDD(ToolsBDD.SERVER, "proj631_livres", ToolsBDD.USERNAME, ToolsBDD.PWD);
         System.out.println(conn);
 
+        new MainManagementGUI(books);
+
     }
 }

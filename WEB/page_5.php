@@ -16,7 +16,7 @@
 
 
 <div class = "container">
-    <div>
+<div>
         
         <form method="POST" action="?page=0" class='formulaire'>
             <?php 
@@ -30,21 +30,25 @@
 
 
             <label id="title">Creation d'un compte</label><br>
-
-            <label for="username" class="form_el">Username</label><br>
-            <input type="text" id="username" name="username" class="form_el"><br>
-
-            <label for="name" class="form_el">Nom</label><br>
-            <input type="text" id="name" name="name" class="form_el"><br>
-
-            <label for="prenom" class="form_el">Prénom</label><br>
-            <input type="text" id="prenom" name="prenom" class="form_el"><br>
-
-            <label for="mdp" class="form_el">Mot de passe</label><br>
-            <input type="password" id="mdp" name="mdp" class="form_el"><br>
-
+            <div class="ligne">
+                <label for="username" class="form_el">Username</label><br>
+                <input type="text" id="username" name="username" class="form_el"><br>
+            </div>
+            <div class="ligne">
+                <label for="name" class="form_el">Nom</label><br>
+                <input type="text" id="name" name="name" class="form_el"><br>
+            </div>
+            <div class="ligne">
+                <label for="prenom" class="form_el">Prénom</label><br>
+                <input type="text" id="prenom" name="prenom" class="form_el"><br>
+            </div>
+            <div class="ligne">
+                <label for="mdp" class="form_el">Mot de passe</label><br>
+                <input type="password" id="mdp" name="mdp" class="form_el"><br>
+                </div>
+            
             <input type="hidden" name="page" value="5">
-            <input type="submit" value="Créer" name="Ajouter" class="button">
+            <input type="submit" value="Créer" name="Ajouter" class="button" id="creation">
         </form>
     </div>
 </div>

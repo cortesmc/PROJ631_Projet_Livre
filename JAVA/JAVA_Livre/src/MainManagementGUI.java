@@ -13,26 +13,34 @@ public class MainManagementGUI extends JFrame implements ActionListener {
     public MainManagementGUI(ArrayList<String> books) {
         super("Library");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 200);
+        setSize(800, 400);
 
         this.books = books;
 
-        // create the title label
+        // create the title label with a font and font size
         titleLabel = new JLabel("Library Management", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
 
-        // create the add, remove, and update buttons
+        // create the add, remove, and update buttons with a background color and font color
         addButton = new JButton("Add Book");
+        addButton.setBackground(new Color(195, 195, 195));
+        addButton.setForeground(Color.BLACK);
         removeButton = new JButton("Remove Book");
+        removeButton.setBackground(new Color(195, 195, 195));
+        removeButton.setForeground(Color.BLACK);
         updateButton = new JButton("Update Books");
+        updateButton.setBackground(new Color(195, 195, 195));
+        updateButton.setForeground(Color.BLACK);
 
         // add action listeners to the buttons
         addButton.addActionListener(this);
         removeButton.addActionListener(this);
         updateButton.addActionListener(this);
 
-        // create a panel to hold the buttons
+        // create a panel to hold the buttons with a border
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 3));
+        buttonPanel.setLayout(new GridLayout(3, 1, 10, 10));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
         buttonPanel.add(updateButton);
@@ -60,5 +68,4 @@ public class MainManagementGUI extends JFrame implements ActionListener {
             // ...
         }
     }
-
 }
