@@ -309,7 +309,7 @@
                     <label><input type='radio' name='options' value='4' class='rbtn'> 4</label>
                     <label><input type='radio' name='options' value='5' class='rbtn'> 5</label>
                     <br>
-                    <textarea id='message' name='message' rows='8' cols='80' resize='none'></textarea>
+                    <textarea id='message' name='message' rows='8' cols='80' resize='none' placeholder='Ecrire votre commentaire ici... (Ne pas mettre de guillemets simple et double)'></textarea>
                     <input type='submit' name='send_com' class='send_com' value='Publier'>
                 </form>";
             }

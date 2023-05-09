@@ -109,7 +109,7 @@
             if (isset($_GET['user'])){
                 $user=$_GET['user'];
                 echo "<div>";
-                echo "<div><a href=\"?page=0&user=$user\" class=\"btn_menu $encours[0]\">Titre</a></div>\n";
+                echo "<div><a href=\"?page=0&user=$user\" class=\"btn_menu $encours[0]\">B.A.R</a></div>\n";
             echo "</div>";
 
             echo "<div>";
@@ -147,7 +147,7 @@
 
             else{
                 echo "<div>";
-                echo "<div><a href=\"?page=0\" class=\"btn_menu $encours[0]\">Titre</a></div>\n";
+                echo "<div><a href=\"?page=0\" class=\"btn_menu $encours[0]\">B.A.R</a></div>\n";
             echo "</div>";
 
             echo "<div>";

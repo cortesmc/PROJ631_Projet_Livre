@@ -12,7 +12,7 @@ public class removeLivreGUI extends JFrame implements ActionListener {
     public removeLivreGUI(ArrayList<String> books) {
         super("Remove Book");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 200);
+        setSize(800, 400);
 
         // save the list of books
         this.books = books;
