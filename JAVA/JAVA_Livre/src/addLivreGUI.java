@@ -14,7 +14,7 @@ public class addLivreGUI extends JFrame implements ActionListener {
     public addLivreGUI(ArrayList<String> books) {
         super("Add Book");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 200);
+        setSize(800, 400);
 
         this.books = books;
 
