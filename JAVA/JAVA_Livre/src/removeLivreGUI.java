@@ -54,7 +54,7 @@ public class removeLivreGUI extends JFrame implements ActionListener {
             String selectedTitle = (String) bookList.getSelectedItem();
         }
         if (e.getSource() == goBack) {
-            new MainManagementGUI(this.books);
+            new MainManagementGUI();
             this.dispose();
         }
     }
