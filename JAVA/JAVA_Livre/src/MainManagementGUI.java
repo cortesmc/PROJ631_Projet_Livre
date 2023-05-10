@@ -10,7 +10,7 @@ public class MainManagementGUI extends JFrame implements ActionListener {
 
     private ArrayList<String> books;
 
-    public MainManagementGUI(ArrayList<String> books) {
+    public MainManagementGUI() {
         super("Library");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 200);
@@ -49,7 +49,7 @@ public class MainManagementGUI extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
-            new addLivreGUI(this.books);
+            new addLivreGUI();
             this.dispose();
         } else if (e.getSource() == removeButton) {
             new removeLivreGUI(this.books);
