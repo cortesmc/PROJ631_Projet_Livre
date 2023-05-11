@@ -330,7 +330,7 @@
 
 
             
-            $sql="SELECT * FROM review JOIN utilisateur ON review.idUser=utilisateur.idUser WHERE review.idBook='$book' AND review.descr!=null";
+            $sql="SELECT * FROM review JOIN utilisateur ON review.idUser=utilisateur.idUser WHERE review.idBook='$book' AND review.descr IS NOT NULL";
             $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
             while ($row = mysqli_fetch_assoc($result)){
                 $user_com=$row["username"];
