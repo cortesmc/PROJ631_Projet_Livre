@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main_page.css" />
+    <?php
+        if(isset($_GET['dark'])){
+            if ($_GET['dark']=="true"){
+                echo " <link rel='stylesheet' href='DarkMode/main_page_dark.css' />";
+            }
+            else{
+                echo "<link rel='stylesheet' href='main_page.css' />";
+            }
+        }
+        else {
+            echo "<link rel='stylesheet' href='main_page.css' />";
+        }
+    ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         integrity="sha384-GFDV7zEa6G8V7U5m6HF5BYBx/zIw2zE6yyTP3q4i4erFOlHz85Xzjq+NCO3Mq/gM"
         crossorigin="anonymous">
@@ -43,12 +55,12 @@
                 $query_string = http_build_query(array('user' => $username));
 
                 // Redirection vers la nouvelle URL avec l'information en GET
-                header('Location: main_page.php?page=0&' . $query_string);
+                header('Location: main_page.php?dark=$dark&page=0&' . $query_string);
                 exit();
 
                 }
                 else{
-                    header('Location: main_page.php?page=5&compte=erreur');
+                    header('Location: main_page.php?dark=$dark&page=5&compte=erreur');
                 }                
         }
     }
@@ -73,17 +85,17 @@
                 }
 
                 if (($user==null)&&($pasword==null)){
-                    header('Location: main_page.php?page=4&compte=erreur');
+                    header('Location: main_page.php?dark=$dark&page=4&compte=erreur');
                 }
                 else{
                     // Génération de la chaîne de requête GET
                     $query_string = http_build_query(array('user' => $user));
 
                     // Redirection vers la nouvelle URL avec l'information en GET
-                    header('Location: main_page.php?page=0&' . $query_string);
+                    header('Location: main_page.php?dark=$dark&page=0&' . $query_string);
                 }
             }else{
-                header('Location: main_page.php?page=4&compte=erreur');
+                header('Location: main_page.php?dark=$dark&page=4&compte=erreur');
             }                
         }
     }
@@ -100,6 +112,13 @@
             }else{
                 $page=$_GET["page"];
             }
+
+            if( !isset($_GET["dark"]) ) { 
+                $dark="false";
+            }else{
+                $dark=$_GET["dark"];
+            }
+
             $encours[$page] = "encours";
 
             $sql = "SELECT libele FROM genre";
@@ -109,27 +128,27 @@
             if (isset($_GET['user'])){
                 $user=$_GET['user'];
                 echo "<div>";
-                echo "<div><a href=\"?page=0&user=$user\" class=\"btn_menu $encours[0]\">B.A.R</a></div>\n";
+                echo "<div><a href=\"?dark=$dark&page=0&user=$user\" class=\"btn_menu $encours[0]\">B.A.R</a></div>\n";
             echo "</div>";
 
             echo "<div>";
-                echo "<div class='cliquable_avec_hover'><a href=\"?page=0&user=$user\" class=\"btn_menu $encours[1]\">Home</a></div>\n";
+                echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=0&user=$user\" class=\"btn_menu $encours[1]\">Home</a></div>\n";
                 echo "<div class='cliquable_avec_hover'>
-                        <a href=\"?page=1&user=$user\" class=\"btn_menu $encours[2]\"  onclick='return false;'>Genres</a>
+                        <a href=\"?dark=$dark&page=1&user=$user\" class=\"btn_menu $encours[2]\"  onclick='return false;'>Genres</a>
                         <div class='hover-box'>";
                         while ($row = mysqli_fetch_assoc($result)){
                             $genre=$row["libele"];
-                            echo "<a href=\"?page=1&&user=$user&genre=$genre\" class='genres'>$genre</a>";
+                            echo "<a href=\"?dark=$dark&page=1&user=$user&genre=$genre\" class='genres'>$genre</a>";
                         }
                         echo "</div>
                     </div> \n";   
 
-                echo "<div class='cliquable_avec_hover'><a href=\"?page=2&user=$user\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
+                echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=2&user=$user\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
             echo "</div>";
                 
             echo "<div>";
                 echo "
-                        <form method='post' action='?page=3&user=$user'>
+                        <form method='post' action='?dark=$dark&page=3&user=$user'>
                             <div class='recherche'>
                             <input type='text' name='search' placeholder='Rechercher...' class='recherche'>
                                 <button type='submit'>
@@ -140,34 +159,39 @@
             echo "</div>";
                 
             echo "<div >";
-                    echo "<div><a href=\"?page=6&user=$user\" class=\"btn_menu $encours[5]\" onclick='return false;'>$user</a></div> \n";
-
+                    echo "<div><a href=\"?dark=$dark&page=6&user=$user\" class=\"btn_menu $encours[5]\" onclick='return false;'>$user</a></div> \n";
+                if ($_GET['dark']=="false"){
+                    echo "<div><a href=\"?dark=true&page=$page&user=$user\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                }
+                else{
+                    echo "<div><a href=\"?dark=false&page=$page&user=$user\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                }
             echo "</div>";
             }
 
             else{
                 echo "<div>";
-                echo "<div><a href=\"?page=0\" class=\"btn_menu $encours[0]\">B.A.R</a></div>\n";
+                echo "<div><a href=\"?dark=$dark&page=0\" class=\"btn_menu $encours[0]\">B.A.R</a></div>\n";
             echo "</div>";
 
             echo "<div>";
-                echo "<div class='cliquable_avec_hover'><a href=\"?page=0\" class=\"btn_menu $encours[1]\">Home</a></div>\n";
+                echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=0\" class=\"btn_menu $encours[1]\">Home</a></div>\n";
                 echo "<div class='cliquable_avec_hover'>
-                        <a href=\"?page=1\" class=\"btn_menu $encours[2]\"  onclick='return false;'>Genres</a>
+                        <a href=\"?dark=$dark&page=1\" class=\"btn_menu $encours[2]\"  onclick='return false;'>Genres</a>
                         <div class='hover-box'>";
                         while ($row = mysqli_fetch_assoc($result)){
                             $genre=$row["libele"];
-                            echo "<a href=\"?page=1&genre=$genre\" class='genres'>$genre</a>";
+                            echo "<a href=\"?dark=$dark&page=1&genre=$genre\" class='genres'>$genre</a>";
                         }
                         echo "</div>
                     </div> \n";   
 
-                echo "<div class='cliquable_avec_hover'><a href=\"?page=4\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
+                echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=4\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
             echo "</div>";
                 
             echo "<div>";
                 echo "
-                        <form method='post' action='?page=3'>
+                        <form method='post' action='?dark=$dark&page=3'>
                             <div style='position: relative;'>
                             <input type='text' name='search' placeholder='Rechercher...' class='recherche'>
                                 <button type='submit' style='position: absolute; top: 50%; transform: translateY(-50%); right: 5px;'>
@@ -178,10 +202,16 @@
             echo "</div>";
                 
             echo "<div >";
-                    echo "<div class='cliquable_avec_hover'><a href=\"?page=4\" class=\"btn_menu $encours[5]\">Sign in</a></div> \n"; 
-                    echo "<div class='cliquable_avec_hover'><a href=\"?page=5\" class=\"btn_menu $encours[6]\">sign up</a></div> \n"; 
-
+                    echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=4\" class=\"btn_menu $encours[5]\">Sign in</a></div> \n"; 
+                    echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=5\" class=\"btn_menu $encours[6]\">sign up</a></div> \n"; 
+                    if ($_GET['dark']=="false"){
+                        echo "<div><a href=\"?dark=true&page=$page\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                    }
+                    else{
+                        echo "<div><a href=\"?dark=false&page=$page\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                    }
             echo "</div>";
+            
             }
 
             ?>
@@ -201,14 +231,14 @@
                 <?php
                 if (isset($_GET["user"])){
                     $user=$_GET["user"];
-                    echo"<a class='link-1' href='?page=0&user=$user'>Home</a>";
-                    echo"<a href='?page=2&user=$user'>Bilio</a>";
-                    echo"<a href='?page=6&user=$user'>$user</a>";
+                    echo"<a class='link-1' href='?dark=$dark&page=0&user=$user'>Home</a>";
+                    echo"<a href='?dark=$dark&page=2&user=$user'>Bilio</a>";
+                    echo"<a href='?dark=$dark&page=6&user=$user'>$user</a>";
                 }else{
-                    echo"<a class='link-1' href='?page=0'>Home</a>";
-                    echo"<a href='?page=2'>Bilio</a>";
-                    echo"<a href='?page=4'>Sign in</a>";
-                    echo"<a href='?page=5'>Sign out</a>";
+                    echo"<a class='link-1' href='?dark=$dark&page=0'>Home</a>";
+                    echo"<a href='?dark=$dark&page=2'>Bilio</a>";
+                    echo"<a href='?dark=$dark&page=4'>Sign in</a>";
+                    echo"<a href='?dark=$dark&page=5'>Sign out</a>";
                 }
                 ?>
             </p>

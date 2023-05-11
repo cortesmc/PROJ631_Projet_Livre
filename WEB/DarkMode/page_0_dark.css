@@ -1,0 +1,38 @@
+h1{
+    font-size: 60px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h2{
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.container {
+    position: relative;
+    min-width: 32rem;
+    margin: 0 auto;
+    width: 70%;
+    max-width: 126rem;
+    padding-top: 100px;
+}
+
+.liens{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 40%;
+    padding-top: 20px;
+    text-decoration: none;
+}
+
+.liens_utiles{
+    text-decoration: none;
+    color: black;
+}
+
+.liens_utiles:hover{
+    text-decoration: underline;
+}

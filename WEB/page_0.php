@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="page_0.css" />
+    <?php
+        if(isset($_GET['dark'])){
+            $dark=$_GET['dark'];
+            if ($_GET['dark']=="true"){
+                echo " <link rel='stylesheet' href='DarkMode/page_0_dark.css' />";
+            }
+            else{
+                echo "<link rel='stylesheet' href='page_0.css' />";
+            }
+        }
+        else {
+            echo "<link rel='stylesheet' href='page_0.css' />";
+            $dark='false';
+        }
+    ?>
     <script src="https://kit.fontawesome.com/2556c3713e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         integrity="sha384-GFDV7zEa6G8V7U5m6HF5BYBx/zIw2zE6yyTP3q4i4erFOlHz85Xzjq+NCO3Mq/gM"
@@ -26,14 +40,14 @@
             <?php
                 if (isset($_GET["user"])){
                     $user=$_GET["user"];
-                    echo"<a href='?page=4' class='liens_utiles'>Se deconnecter</a>";
-                    echo"<a href='?page=5' class='liens_utiles'>Créer un compte</a>";
-                    echo"<a href='?page=2&user=$user' class='liens_utiles'>Ma bibliothéque</a>";
+                    echo"<a href='?dark=$dark&page=4' class='liens_utiles'>Se deconnecter</a>";
+                    echo"<a href='?dark=$dark&page=5' class='liens_utiles'>Créer un compte</a>";
+                    echo"<a href='?dark=$dark&page=2&user=$user' class='liens_utiles'>Ma bibliothéque</a>";
                 }
                 else{
-                    echo"<a href='?page=4' class='liens_utiles'>Se connecter</a>";
-                    echo"<a href='?page=5' class='liens_utiles'>Créer un compte</a>";
-                    echo"<a href='?page=4' class='liens_utiles'>Ma bibliothéque</a>";
+                    echo"<a href='?dark=$dark&page=4' class='liens_utiles'>Se connecter</a>";
+                    echo"<a href='?dark=$dark&page=5' class='liens_utiles'>Créer un compte</a>";
+                    echo"<a href='?dark=$dark&page=4' class='liens_utiles'>Ma bibliothéque</a>";
                 }
 
             ?>

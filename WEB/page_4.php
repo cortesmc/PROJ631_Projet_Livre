@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="page_4.css" />
+    <?php
+        if(isset($_GET['dark'])){
+            $dark=$_GET['dark'];
+            if ($_GET['dark']=="true"){
+                echo " <link rel='stylesheet' href='DarkMode/page_4_dark.css' />";
+            }
+            else{
+                echo "<link rel='stylesheet' href='page_4.css' />";
+            }
+        }
+        else {
+            echo "<link rel='stylesheet' href='page_4.css' />";
+            $dark='false';
+        }
+    ?>
     <script src="https://kit.fontawesome.com/2556c3713e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         integrity="sha384-GFDV7zEa6G8V7U5m6HF5BYBx/zIw2zE6yyTP3q4i4erFOlHz85Xzjq+NCO3Mq/gM"
@@ -13,7 +27,7 @@
 </head>
 <div class = "container">
     <div>
-        <form method="POST" action="?page=0" class='formulaire'>
+        <form method="POST" action="?dark=$dark&page=0" class='formulaire'>
             <?php 
             if (isset($_GET['compte'])){
                 if ($_GET['compte']=="erreur"){
