@@ -26,8 +26,8 @@ h2{
 }
 
 .image-container {
-    position: fixed;
-    width: 20%;
+    /* position: fixed; */
+    width: 30%;
 }
 
 .image-container img {
@@ -43,7 +43,7 @@ h2{
 }
 
 .text-container {
-    margin-left: 35%;
+    margin-left: 5%;
     width: 65%;
 }
 
@@ -64,6 +64,7 @@ h2{
 .rating{
     position: relative;
     padding: 40px;
+    padding-right: 0px;
 }
 
 
@@ -78,6 +79,7 @@ h2{
 button{
     background-color: transparent;
     border: none;
+    
 }
 
 .rating button {
@@ -88,6 +90,7 @@ button{
     transition: color .4s;
     position: absolute;
     direction:rtl;
+    right: 0px;
 }
 
 .rating form button:hover,
