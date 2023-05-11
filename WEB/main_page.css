@@ -109,15 +109,11 @@ header{
 
 
 .recherche {
-  font-size: 16px;
-  padding: 5px;
-  padding-right: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.form_recherche .recherche{
-  border: 0px;
+    font-size: 16px;
+    padding: 5px;
+    padding-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 
@@ -202,7 +198,7 @@ button{
   position: absolute; 
   top: 50%; 
   transform: translateY(-50%); 
-  right: 30px;
+  right: 5px;
 }
 
 .recherche{

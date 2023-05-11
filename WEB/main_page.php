@@ -213,7 +213,7 @@
                 
             echo "<div >";
                     echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=4\" class=\"btn_menu $encours[5]\">Sign in</a></div> \n"; 
-                    echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=5\" class=\"btn_menu $encours[6]\">sign up</a></div> \n"; 
+                    echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=5\" class=\"btn_menu $encours[6]\">Sign up</a></div> \n"; 
                     if ($_GET['dark']=="false"){
                         // Récupérer la chaîne de requête de l'URL actuelle
                         $queryString = $_SERVER['QUERY_STRING'];
@@ -252,7 +252,7 @@
                 if (isset($_GET["user"])){
                     $user=$_GET["user"];
                     echo"<a class='link-1' href='?dark=$dark&page=0&user=$user'>Home</a>";
-                    echo"<a href='?dark=$dark&page=2&user=$user'>Bilio</a>";
+                    echo"<a href='?dark=$dark&page=2&user=$user'>Biblio</a>";
                     echo"<a href='?dark=$dark&page=6&user=$user'>$user</a>";
                 }else{
                     echo"<a class='link-1' href='?dark=$dark&page=0'>Home</a>";
