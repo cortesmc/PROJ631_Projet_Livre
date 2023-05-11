@@ -36,9 +36,27 @@ body{
     margin : 5px;
 }
 
-.ligne{
-    align-items: normal;
+label {
+    font-size: 25px;
+    color: rgb(90, 18, 18);
+    font-weight: bold;
 }
+.ligne{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 0px;
+}
+
+.ligne label{
+    padding-left: 0px;
+}
+
+.ligne input{
+    padding-right: 0px;
+}
+
+
+
 span.form_el {
     font-size: 25px;
 }
@@ -48,7 +66,7 @@ input.form_el{
     font-size: 20px;
 }
 
-button.form_el {  
+#creation {  
     box-shadow: 0px 0px 10px 1px rgb(144, 61, 31);
     font-weight: bold;
     color:bisque;

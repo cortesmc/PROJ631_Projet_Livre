@@ -23,15 +23,18 @@
             ?>
 
             <label id="title">Connexion</label><br>
-
-            <label for="username" class="form_el">Username</label><br>
-            <input type="text" id="username" name="username" class="form_el"><br>
-
-            <label for="mdp" class="form_el">Mot de passe</label><br>
-            <input type="password" id="mdp" name="mdp" class="form_el"><br>
-
-            <input type="hidden" name="page" value="5">
-            <input type="submit" value="Connexion" name="Connexion" class="button">
+            <div id = "ligns">
+            <div class ="ligne">
+                <label for="username" class="form_el">Username</label><br>
+                <input type="text" id="username" name="username" class="form_el"><br>
+            </div>
+            <div class ="ligne">
+                <label for="mdp" class="form_el">Mot de passe</label><br>
+                <input type="password" id="mdp" name="mdp" class="form_el"><br>
+            </div>
+            </div>
+                <input type="hidden" name="page" value="5">
+                <input type="submit" value="Connexion" name="Connexion" class="button" id="connexion">
         </form>
     </div>
 </div>
