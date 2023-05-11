@@ -168,7 +168,8 @@ textarea {
     margin-right: 15px;
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
     width: 100%;
-    color: black;
+    color: white;
+    background-color: #2b222e;;
   }
 
 
@@ -204,9 +205,11 @@ label input.rbtn{
 .send_com{
     margin: 5px;
     margin-left: 20px;
-    padding: 5px;
+    padding: 10px;
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 5%;
     background-color:rgb(66, 24, 61);
     border-color: rgb(186, 85, 211);
+    font-size:medium;
     text-align: center;
 }
