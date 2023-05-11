@@ -263,10 +263,10 @@
 
 
                     if((mysqli_fetch_assoc($result))==null){
-                        echo"<form action='?dark=$dark&page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Ajouter à ma Bibliotéque'></form>";
+                        echo"<form action='?dark=$dark&page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Ajouter à ma Bibliothèque'></form>";
                     }
                     else{
-                        echo"<form action='?dark=$dark&page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit_none' class='aujout_liste' value='Retirer de ma Bibliotéque'></form>";
+                        echo"<form action='?dark=$dark&page=livre&user=$user&book=$book' method='POST'><input type='submit' name='submit_none' class='aujout_liste' value='Retirer de ma Bibliothèque'></form>";
                     }
                 }
             ?>
