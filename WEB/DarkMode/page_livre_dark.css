@@ -26,8 +26,8 @@ h2{
 }
 
 .image-container {
-    position: fixed;
-    width: 20%;
+    /* position: fixed; */
+    width: 30%;
 }
 
 .image-container img {
@@ -43,7 +43,7 @@ h2{
 }
 
 .text-container {
-    margin-left: 35%;
+    margin-left: 5%;
     width: 65%;
 }
 
