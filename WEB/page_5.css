@@ -70,6 +70,8 @@ input.form_el{
     border-left-color: rgb(144, 61, 31);
     border-right-color: bisque;
     border-bottom-color: bisque;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #creation {  
