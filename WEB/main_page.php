@@ -238,7 +238,7 @@
             ?>
         </div>
     </header>
-    <div>
+    <div class='principal'>
         <?php
             if( file_exists("page_".$page.".php") ){ 
                 include("page_".$page.".php");

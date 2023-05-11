@@ -1,3 +1,8 @@
+.principal{
+  margin-bottom: 62px;
+  min-height: 100%;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -108,12 +113,12 @@ header{
 
 
 
-.recherche {
-    font-size: 16px;
-    padding: 5px;
-    padding-right: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+input.recherche {
+  font-size: 16px;
+  padding: 5px;
+  padding-right: 20px;
+  border: 1px solid;
+  border-radius: 5px;
 }
 
 
@@ -140,7 +145,6 @@ header{
   text-align: left;
   font: normal 16px sans-serif;
   padding: 20px 50px;
-  margin-top: 300px;
 }
 
 .footer-distributed .footer-left p {
