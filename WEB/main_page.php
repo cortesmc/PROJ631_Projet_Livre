@@ -161,10 +161,20 @@
             echo "<div >";
                     echo "<div><a href=\"?dark=$dark&page=6&user=$user\" class=\"btn_menu $encours[5]\" onclick='return false;'>$user</a></div> \n";
                 if ($_GET['dark']=="false"){
-                    echo "<div><a href=\"?dark=true&page=$page&user=$user\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                    // Récupérer la chaîne de requête de l'URL actuelle
+                    $queryString = $_SERVER['QUERY_STRING'];
+                    parse_str($queryString, $params);
+                    $params['dark'] = 'true';
+                    $newQueryString = http_build_query($params);
+                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
                 }
                 else{
-                    echo "<div><a href=\"?dark=false&page=$page&user=$user\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                    // Récupérer la chaîne de requête de l'URL actuelle
+                    $queryString = $_SERVER['QUERY_STRING'];
+                    parse_str($queryString, $params);
+                    $params['dark'] = 'false';
+                    $newQueryString = http_build_query($params);
+                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
                 }
             echo "</div>";
             }
@@ -205,10 +215,20 @@
                     echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=4\" class=\"btn_menu $encours[5]\">Sign in</a></div> \n"; 
                     echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=5\" class=\"btn_menu $encours[6]\">sign up</a></div> \n"; 
                     if ($_GET['dark']=="false"){
-                        echo "<div><a href=\"?dark=true&page=$page\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                        // Récupérer la chaîne de requête de l'URL actuelle
+                        $queryString = $_SERVER['QUERY_STRING'];
+                        parse_str($queryString, $params);
+                        $params['dark'] = 'true';
+                        $newQueryString = http_build_query($params);
+                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
                     }
                     else{
-                        echo "<div><a href=\"?dark=false&page=$page\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                        // Récupérer la chaîne de requête de l'URL actuelle
+                        $queryString = $_SERVER['QUERY_STRING'];
+                        parse_str($queryString, $params);
+                        $params['dark'] = 'false';
+                        $newQueryString = http_build_query($params);
+                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
                     }
             echo "</div>";
             

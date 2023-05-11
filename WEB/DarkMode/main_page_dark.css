@@ -150,12 +150,10 @@ input.recherche {
   font: normal 16px sans-serif;
   padding: 20px 50px;
   margin-top: 300px;
-  position: absolute;
-  bottom:0;
 }
 
 .footer-distributed .footer-left p {
-  color: #0f0f0f;
+  color: white;
   font-size: 14px;
   margin: 0;
 }
@@ -164,7 +162,7 @@ input.recherche {
 .footer-distributed p.footer-links {
   font-size: 18px;
   font-weight: bold;
-  color: #0f0f0f;
+  color: white;
   margin: 0 0 10px;
   padding: 0;
   transition: ease .25s;
@@ -182,7 +180,7 @@ input.recherche {
   content: "·";
   font-size: 20px;
   left: 0;
-  color: #0f0f0f;
+  color: white;
   display: inline-block;
   padding-right: 5px;
 }
