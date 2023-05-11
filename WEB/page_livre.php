@@ -41,10 +41,10 @@
             $query_string = http_build_query(array('note' => $note));
 
             if (isset($_GET["com"])){
-                header('Location: main_page.php?dark=$dark&page=livre&user='.$user.'&book='.$book.'&' . $query_string . '&com=true');
+                header('Location: main_page.php?dark='.$dark.'&page=livre&user='.$user.'&book='.$book.'&' . $query_string . '&com=true');
             }
             else{
-                header('Location: main_page.php?dark=$dark&page=livre&user='.$user.'&book='.$book.'&' . $query_string);
+                header('Location: main_page.php?dark='.$dark.'&page=livre&user='.$user.'&book='.$book.'&' . $query_string);
             }
 
             
@@ -97,12 +97,12 @@
         if (mysqli_num_rows($result) > 0){
             $sql="UPDATE review SET note = '$nb_etoile', descr='$texte' WHERE (review.idUser=(SELECT idUser FROM utilisateur WHERE username='$user')) AND (review.idBook='$book')";
             mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
-            header('Location: main_page.php?dark=$dark&page=livre&user='.$user.'&book='.$book.'&note=' . $nb_etoile);
+            header('Location: main_page.php?dark='.$dark.'&page=livre&user='.$user.'&book='.$book.'&note=' . $nb_etoile);
         }
         else{
             $sql="INSERT INTO review (note, descr,idBook,idUser) VALUES ('$nb_etoile','$texte','$book',(SELECT idUser FROM utilisateur WHERE username='$user'))";
             mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
-            header('Location: main_page.php?dark=$dark&page=livre&user='.$user.'&book='.$book.'&note=' . $nb_etoile);
+            header('Location: main_page.php?dark='.$dark.'&page=livre&user='.$user.'&book='.$book.'&note=' . $nb_etoile);
         }
     }
 

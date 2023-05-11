@@ -86,17 +86,17 @@
                 }
 
                 if (($user==null)&&($pasword==null)){
-                    header('Location: main_page.php?dark=$dark&page=4&compte=erreur');
+                    header('Location: main_page.php?dark='.$dark.'&page=4&compte=erreur');
                 }
                 else{
                     // Génération de la chaîne de requête GET
                     $query_string = http_build_query(array('user' => $user));
 
                     // Redirection vers la nouvelle URL avec l'information en GET
-                    header('Location: main_page.php?dark=$dark&page=0&' . $query_string);
+                    header('Location: main_page.php?dark='.$dark.'&page=0&' . $query_string);
                 }
             }else{
-                header('Location: main_page.php?dark=$dark&page=4&compte=erreur');
+                header('Location: main_page.php?dark='.$dark.'&page=4&compte=erreur');
             }                
         }
     }

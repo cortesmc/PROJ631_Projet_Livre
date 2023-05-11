@@ -27,8 +27,9 @@
 </head>
 <div class = "container">
     <div>
-        <form method="POST" action="?dark=$dark&page=0" class='formulaire'>
-            <?php 
+        <?php 
+        echo"<form method='POST' action='?dark=$dark&page=0' class='formulaire'>";
+            
             if (isset($_GET['compte'])){
                 if ($_GET['compte']=="erreur"){
                     echo"<H2 class='erreur'>Erreur de connexion</H2>";
