@@ -153,7 +153,7 @@
                 
             echo "<div>";
                 echo "
-                        <form method='post' action='?dark=$dark&page=3&user=$user' class='form_recherche'>
+                        <form method='POST' action='?dark=$dark&page=3&user=$user' class='form_recherche'>
                             <div class='recherche'>
                             <input type='text' name='search' placeholder='Rechercher...' class='recherche'>
                                 <button type='submit'>
