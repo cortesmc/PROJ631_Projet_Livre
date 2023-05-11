@@ -95,13 +95,14 @@ public class updateLivreGUI extends JFrame implements ActionListener {
         String year = yearField.getText();
 
 
+        // -- Get all name genre in list
         String[] genres =  genre.split(",");
         String[] authors = author.split(",");
 
+
+        // -- Convert list to ArrayList
         ArrayList<String> listNewGenres = new ArrayList<String>();
         ArrayList<String> listNewAuthors = new ArrayList<String>();
-
-
         for (String Vgenre : genres) {
             listNewGenres.add(Vgenre);
         }
@@ -142,7 +143,7 @@ public class updateLivreGUI extends JFrame implements ActionListener {
         Connection conn = ToolsBDD.connexionBDD(ToolsBDD.SERVER, "proj631_livres", ToolsBDD.USERNAME, ToolsBDD.PWD);
         Book bookSelected = ToolsBDD.getBookAllInfoByTitleBDD(conn, titleSelected);
 
-//        System.out.println(bookSelected);
+        System.out.println(bookSelected);
 
         // -- GET ALL GENRE IN A SIMPLE STRING
         int i = 0;
