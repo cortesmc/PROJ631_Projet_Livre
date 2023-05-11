@@ -12,14 +12,14 @@ body{
     padding: 10px;
     text-align: center;
     width: 500px;
-    background-color:rgb(241, 178, 133);
+    background-color:rgb(186, 85, 211);
     border-radius: 10px;
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
     padding: 20px;
 }
 
 #title{
-    color: bisque;
+    color: rgb(240, 217, 250);
     font-weight: bold;
     font-size: 50px;
     margin-top: 20px;
@@ -37,7 +37,7 @@ body{
 
 label {
     font-size: 25px;
-    color: rgb(90, 18, 18);
+    color: rgb(66, 24, 61);
     font-weight: bold;
 }
 .ligne{
@@ -65,22 +65,27 @@ input.form_el{
     width: 200px;
     font-size: 20px;
     background-color: white;
+    background-color: white;
     border-radius: 30px;
-    border-top-color: rgb(144, 61, 31);
-    border-left-color: rgb(144, 61, 31);
-    border-right-color: bisque;
-    border-bottom-color: bisque;
+    border-top-color: rgb(66, 24, 61);
+    border-left-color: rgb(66, 24, 61);
+    border-right-color: rgb(240, 217, 250);
+    border-bottom-color: rgb(240, 217, 250);
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #creation {  
-    box-shadow: 0px 0px 10px 1px rgb(144, 61, 31);
+    box-shadow: 0px 0px 10px 1px rgb(84, 34, 79);
     font-weight: bold;
-    color:bisque;
+    color:rgb(240, 217, 250);
     font-size: 25px;
+    padding-right: 5px;
     height: 60px;
     width: 250px;
     margin: 30px;
-    background-color: rgb(90, 18, 18);
+    background-color: rgb(66, 24, 61);
     border: 0px;
     border-radius: 30px;
 }
@@ -90,7 +95,7 @@ h2{
 }
 
 #creation:active {
-    color: bisque;
-    background-color: rgb(122, 31, 31);
-    box-shadow: 0px 0px 10px 1px rgb(60, 12, 12) inset;
+    color: rgb(240, 217, 250);
+    background-color: rgb(97, 39, 90);
+    box-shadow: 0px 0px 10px 1px rgb(66, 24, 61) inset;
 }
