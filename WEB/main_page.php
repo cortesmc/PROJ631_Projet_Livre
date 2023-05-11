@@ -167,7 +167,7 @@
                     parse_str($queryString, $params);
                     $params['dark'] = 'true';
                     $newQueryString = http_build_query($params);
-                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >◐</a></div> \n";
                 }
                 else{
                     // Récupérer la chaîne de requête de l'URL actuelle
@@ -175,7 +175,7 @@
                     parse_str($queryString, $params);
                     $params['dark'] = 'false';
                     $newQueryString = http_build_query($params);
-                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >◑</a></div> \n";
                 }
             echo "</div>";
             }
@@ -221,7 +221,7 @@
                         parse_str($queryString, $params);
                         $params['dark'] = 'true';
                         $newQueryString = http_build_query($params);
-                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >◐</a></div> \n";
                     }
                     else{
                         // Récupérer la chaîne de requête de l'URL actuelle
@@ -229,7 +229,7 @@
                         parse_str($queryString, $params);
                         $params['dark'] = 'false';
                         $newQueryString = http_build_query($params);
-                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >◑</a></div> \n";
                     }
             echo "</div>";
             
