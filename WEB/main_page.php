@@ -148,7 +148,7 @@
                 
             echo "<div>";
                 echo "
-                        <form method='post' action='?dark=$dark&page=3&user=$user'>
+                        <form method='post' action='?dark=$dark&page=3&user=$user' class='form_recherche'>
                             <div class='recherche'>
                             <input type='text' name='search' placeholder='Rechercher...' class='recherche'>
                                 <button type='submit'>
@@ -201,7 +201,7 @@
                 
             echo "<div>";
                 echo "
-                        <form method='post' action='?dark=$dark&page=3'>
+                        <form method='post' action='?dark=$dark&page=3' class='form_recherche'>
                             <div style='position: relative;'>
                             <input type='text' name='search' placeholder='Rechercher...' class='recherche'>
                                 <button type='submit' style='position: absolute; top: 50%; transform: translateY(-50%); right: 5px;'>

@@ -116,6 +116,10 @@ header{
   border-radius: 5px;
 }
 
+.form_recherche .recherche{
+  border: 0px;
+}
+
 
 
 
@@ -198,7 +202,7 @@ button{
   position: absolute; 
   top: 50%; 
   transform: translateY(-50%); 
-  right: 5px;
+  right: 30px;
 }
 
 .recherche{
