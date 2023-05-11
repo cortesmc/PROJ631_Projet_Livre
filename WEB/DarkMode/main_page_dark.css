@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color:white;
+}
+body{
+  background-color:#161018;
 }
 
 header{
@@ -9,7 +13,7 @@ header{
     width: 100%;
 }
 #fond{
-    background: rgb(255, 235, 205);
+    background: rgb(186, 85, 211);
     padding-left: 100px;
     padding-right: 20px;
     box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
@@ -29,12 +33,13 @@ header{
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
-    color: #333;
+
+    color:white;
     padding: 20px;
 }
 
 .cliquable_avec_hover :hover{
-    background-color: rgb(255, 221, 170);
+    background-color: rgb(154, 49, 126);
 }
 
 .cliquable_avec_hover {
@@ -49,7 +54,7 @@ header{
     width: 100%;
     height: 4px;
     border-radius: 4px;
-    background-color: #18272F;
+    background-color: white;
     bottom: 0;
     left: 0;
     transform-origin: right;
@@ -69,7 +74,7 @@ header{
     opacity: 0;
     width: 200px;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     top: 100%;
@@ -85,12 +90,12 @@ header{
     font-size: 16px;
     padding: 3px;
     text-decoration: none;
-    color: black;
+    color: white;
     font-family: Arial, sans-serif;
 }
 
 .genres:hover{
-    background-color: white;
+    background-color:#161018;
     text-decoration: underline;
 }
 
@@ -101,21 +106,25 @@ header{
     display: block;
     opacity: 1;
     pointer-events:all;
-    background-color: white;
+    background-color: #161018;
     text-decoration: none;
 }
 
 
 
 
-.recherche {
+input.recherche {
+    color:black;
     font-size: 16px;
     padding: 5px;
     padding-right: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid;
     border-radius: 5px;
 }
 
+.fa{
+  color:black;
+}
 
 
 
@@ -133,7 +142,7 @@ header{
 
 
 .footer-distributed {
-  background-color: rgb(255, 235, 205);
+  background: rgb(186, 85, 211);
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   width: 100%;
@@ -141,6 +150,8 @@ header{
   font: normal 16px sans-serif;
   padding: 20px 50px;
   margin-top: 300px;
+  position: absolute;
+  bottom:0;
 }
 
 .footer-distributed .footer-left p {
