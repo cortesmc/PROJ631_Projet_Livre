@@ -76,12 +76,12 @@ public class addLivreGUI extends JFrame implements ActionListener {
         String[] genres = genre.split(",");
         String[] authors = author.split(",");
 
-        // -- TODO Check if all fields are not empty
+        // -- Check if all fields are not empty
         if ( title.length() == 0 && genre.length() == 0 && author.length() == 0 && description.length() == 0 && thumbnail.length() == 0 && year.length() == 0)
             JOptionPane.showMessageDialog(this, "Les champs sont vides");
 
         else {
-            // -- TODO Check if the book doesn't exist yet with check by title
+            // -- Check if the book doesn't exist yet with check by title
             Connection conn = ToolsBDD.connexionBDD(ToolsBDD.SERVER, "proj631_livres", ToolsBDD.USERNAME, ToolsBDD.PWD);
 
             if ( ToolsBDD.isBookExist(conn, title) )

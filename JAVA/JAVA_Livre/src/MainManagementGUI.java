@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MainManagementGUI extends JFrame implements ActionListener {
@@ -60,7 +61,11 @@ public class MainManagementGUI extends JFrame implements ActionListener {
             new addLivreGUI();
             this.dispose();
         } else if (e.getSource() == removeButton) {
-            new removeLivreGUI(this.books);
+            try {
+                new removeLivreGUI();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
             this.dispose();
 
         } else if (e.getSource() == updateButton) {
