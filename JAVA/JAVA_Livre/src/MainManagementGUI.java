@@ -69,8 +69,12 @@ public class MainManagementGUI extends JFrame implements ActionListener {
             this.dispose();
 
         } else if (e.getSource() == updateButton) {
-            // handle update books button click
-            // ...
+            try {
+                new updateLivreGUI();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            this.dispose();
         }
     }
 }
