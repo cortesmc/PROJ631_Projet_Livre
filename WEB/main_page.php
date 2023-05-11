@@ -14,6 +14,7 @@
             }
         }
         else {
+            header('Location: main_page.php?dark=false');
             echo "<link rel='stylesheet' href='main_page.css' />";
         }
     ?>
