@@ -1,23 +1,36 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class addLivreGUI extends JFrame implements ActionListener {
+public class updateLivreGUI extends JFrame implements ActionListener {
+
+    private JComboBox<String> bookList;
 
     private JTextField titleField, genreField, authorField,descriptionField, thumbnailField, yearField;
     private JButton btnAddBook, goBack;
 
     private ArrayList<String> books;
 
-    public addLivreGUI() {
-        super("Add Book");
+    public updateLivreGUI() throws  SQLException{
+        super("Update Book");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
 
-        this.books = books;
+        // get the list of books
+        //Connection conn = ToolsBDD.connexionBDD(ToolsBDD.SERVER, "proj631_livres", ToolsBDD.USERNAME, ToolsBDD.PWD);
+        //this.books = ToolsBDD.getAllBooksTitle(conn);
 
+        // create the book list combo box and remove button
+        bookList = new JComboBox<>();
+    /*
+        for (String book : books) {
+            bookList.addItem(book);
+        }
+
+     */
         // create the text fields and button
         titleField = new JTextField(20);
         genreField = new JTextField(20);
@@ -27,7 +40,7 @@ public class addLivreGUI extends JFrame implements ActionListener {
         thumbnailField = new JTextField(100);
         yearField = new JTextField(4);
 
-        btnAddBook = new JButton("Add Book");
+        btnAddBook = new JButton("Update Book");
         btnAddBook.addActionListener( (event) -> {
             try {
                 BtnAddBookListener(event);
@@ -41,7 +54,9 @@ public class addLivreGUI extends JFrame implements ActionListener {
 
         // add the text fields and button to the frame
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(7, 2));
+        panel.setLayout(new GridLayout(9, 2));
+        panel.add(new JLabel("Select book to update:"));
+        panel.add(bookList);
         panel.add(new JLabel("Title:"));
         panel.add(titleField);
         panel.add(new JLabel("Genre:"));
@@ -62,7 +77,7 @@ public class addLivreGUI extends JFrame implements ActionListener {
 
         setVisible(true);
     }
-    
+
     public void BtnAddBookListener(ActionEvent e) throws SQLException {
 
         // -- Get field to add a book

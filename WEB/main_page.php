@@ -131,7 +131,7 @@
                 echo "
                         <form method='post' action='?page=3&user=$user'>
                             <div class='recherche'>
-                            <input type='text' name='search' placeholder='Rechercher...'>
+                            <input type='text' name='search' placeholder='Rechercher...' class='recherche'>
                                 <button type='submit'>
                                 <i class='fa fa-search'></i>
                                 </button>
@@ -169,7 +169,7 @@
                 echo "
                         <form method='post' action='?page=3'>
                             <div style='position: relative;'>
-                            <input type='text' name='search' placeholder='Rechercher...'>
+                            <input type='text' name='search' placeholder='Rechercher...' class='recherche'>
                                 <button type='submit' style='position: absolute; top: 50%; transform: translateY(-50%); right: 5px;'>
                                 <i class='fa fa-search'></i>
                                 </button>

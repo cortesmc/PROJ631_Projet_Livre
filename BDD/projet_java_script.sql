@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS Genre;
 DROP TABLE IF EXISTS Belong;
 DROP TABLE IF EXISTS Review;
 
----------------- CREATE TABLE
+/* ---------------- CREATE TABLE */
 
 CREATE TABLE Book (
     idBook      integer auto_increment,
@@ -19,8 +19,8 @@ CREATE TABLE Book (
 ) ;
 
 CREATE TABLE Author (
-    idAuthor    integer auto_increment,
-    name    varchar(50),
+    idAuthor    integer         auto_increment,
+    name        varchar(50)     unique,
     CONSTRAINT PK_AUTHOR PRIMARY KEY  (idAuthor)
 ) ;
 
@@ -50,8 +50,8 @@ CREATE TABLE Own (
 ) ;
 
 CREATE TABLE Genre (
-    idGenre      integer auto_increment,
-    libele       varchar(50),
+    idGenre      integer        auto_increment,
+    libele       varchar(50)    unique,
     CONSTRAINT PK_GENRE PRIMARY KEY  (idGenre)
 ) ;
 
@@ -74,7 +74,7 @@ CREATE TABLE Review (
     CONSTRAINT FK_REVIEW_USER FOREIGN KEY (idUser) REFERENCES Utilisateur(idUser)
 ) ;
 
----------------- FOREIGN KEY
+/* ---------------- FOREIGN KEY */
 
 ALTER TABLE IsWrite ADD FOREIGN KEY (idAuthor) REFERENCES Author(idAuthor);
 

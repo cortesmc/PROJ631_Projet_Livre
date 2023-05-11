@@ -33,6 +33,18 @@ body{
     margin-top: 20px;
 }
 
+.ligne{
+    align-items: normal;
+}
+
+#ligns{
+    display : grid;
+}
+
+.ligne > .form_el {
+    display: block;
+}
+
 .form_el{
     margin : 5px;
 }
@@ -48,11 +60,12 @@ input.form_el{
     font-size: 20px;
 }
 
-button.form_el {  
+#connexion {  
     box-shadow: 0px 0px 10px 1px rgb(144, 61, 31);
     font-weight: bold;
     color:bisque;
     font-size: 25px;
+    padding-right: 5px;
     height: 60px;
     width: 250px;
     margin: 30px;
