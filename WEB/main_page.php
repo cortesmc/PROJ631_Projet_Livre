@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
         if(isset($_GET['dark'])){
-            if ($_GET['dark']=="true"){
+            if ($_GET['dark']=='true'){
                 echo " <link rel='stylesheet' href='DarkMode/main_page_dark.css' />";
+                $dark='true';
             }
             else{
                 echo "<link rel='stylesheet' href='main_page.css' />";
+                $dark='false';
             }
         }
         else {
             header('Location: main_page.php?dark=false');
             echo "<link rel='stylesheet' href='main_page.css' />";
+            $dark='false';
         }
     ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -56,12 +59,12 @@
                 $query_string = http_build_query(array('user' => $username));
 
                 // Redirection vers la nouvelle URL avec l'information en GET
-                header('Location: main_page.php?dark=$dark&page=0&' . $query_string);
+                header('Location: main_page.php?dark='.$dark.'&page=0&' . $query_string);
                 exit();
 
                 }
                 else{
-                    header('Location: main_page.php?dark=$dark&page=5&compte=erreur');
+                    header('Location: main_page.php?dark='.$dark.'&page=5&compte=erreur');
                 }                
         }
     }
@@ -74,6 +77,7 @@
                 // Insérer les données dans la base de données
                 $username = $_POST['username'];
                 $mdp = $_POST['mdp'];
+                $dark=$_GET["dark"];
                 // Code pour insérer les données dans la base de données ici
 
                 $sql = "SELECT * FROM utilisateur WHERE username='$username' AND password='$mdp'";
