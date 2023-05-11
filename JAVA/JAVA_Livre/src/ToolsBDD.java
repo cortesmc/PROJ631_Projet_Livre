@@ -375,18 +375,13 @@ public class ToolsBDD {
         // -- UPDATE GENRES
         if (!bookToUpdate.getListGenre().equals(newGenres))
             ToolsBDD.updateBookGenres(conn, bookToUpdate, newGenres);
-//
-//        if (!bookToUpdate.getListAuthor().equals(newAuthors))
-//            // -- TODO UPDATE authors
+
+        if (!bookToUpdate.getListAuthor().equals(newAuthors))
+            ToolsBDD.updateBookAuthors(conn, bookToUpdate, newAuthors);
+
     }
 
     public static void updateBookGenres(Connection conn, Book bookToUpdate, ArrayList<String> newGenres) throws SQLException {
-        System.out.println("LIST ODL GENRES :");
-        System.out.println(bookToUpdate.getListGenre());
-
-        System.out.println("LIST NEW GENRES :");
-        System.out.println(newGenres);
-
 
         // -- ADD NEW GENRES
         for (String newGenre : newGenres) {
@@ -417,6 +412,42 @@ public class ToolsBDD {
             }
         }
     }
+
+    public static void updateBookAuthors(Connection conn, Book bookToUpdate, ArrayList<String> newAuthors) throws SQLException {
+
+
+        // -- ADD NEW GENRES
+        for (String newAuthor : newAuthors) {
+            System.out.println(newAuthor);
+            if (!bookToUpdate.getListAuthor().contains(newAuthor)) {
+
+                // -- INSERT IGNORE DANS GENRE
+                ToolsBDD.insertAuthorBDD(conn, newAuthor);
+
+                // -- SELECT ID OF GENRE INSÉRÉ
+                String idAuthor = ToolsBDD.selectFieldBDD(conn, "SELECT idAuthor FROM Author WHERE name='"+ newAuthor +"'");
+                System.out.println(idAuthor);
+
+                // -- INSERT idBook AND idGenre IN TABLE BELONG
+                ToolsBDD.insertIsWriteBDD(conn, idAuthor, Integer.toString(bookToUpdate.getBook()));
+            }
+
+        }
+
+        // -- REMOVE GENRES QUI ONT ÉTÉ ENLEVÉS
+        for (String oldAuthor : bookToUpdate.getListAuthor()) {
+            if ( !newAuthors.contains( oldAuthor ) ) {
+//
+                // -- GET ID OF THE GENRE
+                int idAuthor = Integer.parseInt(ToolsBDD.selectFieldBDD(conn, "SELECT idAuthor FROM Author WHERE name='"+ oldAuthor +"'"));
+
+                // -- REMOVE FROM BELONG WITH idBook AND idGenre
+                ToolsBDD.removeIsWriteBDD(conn, bookToUpdate.getBook(), idAuthor);
+
+            }
+        }
+    }
+
 
     // -------------------------------- METHODS BDD GENRE
     public static void insertGenreBDD(Connection conn, String genre) throws SQLException {
@@ -455,8 +486,8 @@ public class ToolsBDD {
 
         // create the mysql insert preparedstatement
         PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setString (1, idBook);
-        preparedStmt.setString (2, idGenre);
+        preparedStmt.setString(1, idBook);
+        preparedStmt.setString(2, idGenre);
 
         preparedStmt.execute();
     }
@@ -512,8 +543,8 @@ public class ToolsBDD {
 
         // create the mysql insert preparedstatement
         PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setString (1, idAuthor);
-        preparedStmt.setString (2, idBook);
+        preparedStmt.setInt(1, Integer.parseInt(idAuthor));
+        preparedStmt.setInt(2, Integer.parseInt(idBook));
 
         preparedStmt.execute();
     }
@@ -525,6 +556,18 @@ public class ToolsBDD {
         // create the mysql insert preparedstatement
         PreparedStatement preparedStmt = conn.prepareStatement(query);
         preparedStmt.setInt(1, idBook);
+
+        preparedStmt.execute();
+    }
+
+    public static void removeIsWriteBDD(Connection conn, int idBook, int idAuthor) throws SQLException {
+        // the mysql delete statement
+        String query = "DELETE FROM IsWrite WHERE idBook = ? AND idAuthor = ?";
+
+        // create the mysql insert preparedstatement
+        PreparedStatement preparedStmt = conn.prepareStatement(query);
+        preparedStmt.setInt(1, idBook);
+        preparedStmt.setInt(2, idAuthor);
 
         preparedStmt.execute();
     }
