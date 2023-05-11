@@ -55,7 +55,10 @@ def clean_genre(liste_genre):
             
     return ans
             
-
+def clean_title(title):
+    new_title =  title.replace("'"," ")
+    last_title = new_title.replace('"',"")
+    return last_title
 #This function find information about one book with its title
 def search_book_by_title(title):
     response = requests.get(f"https://openlibrary.org/search.json?q={title}&limit=1")
@@ -108,10 +111,13 @@ def all_books(n):
         title_book = book["title"]
         print(title_book)
         infos = search_book_by_title(title_book)
-        print(len(infos))
-        res.append(infos)        
-        with open("books_infos.json","w") as f1:
-            json.dump(res,f1,indent=3)
+        if infos == None:
+            print("OUI C'est None")
+        else:
+            
+            res.append(infos)        
+            with open("books_infos.json","w") as f1:
+                json.dump(res,f1,indent=3)
 
 
 def clean_books(filename):
@@ -135,6 +141,7 @@ def clean_books(filename):
 if __name__ == "__main__":
     #search_book_by_title("Le petit prince")
     #var = 7272
-    #all_books(0)
+    #all_books(5952)
     clean_books("books_infos.json")
+
 
