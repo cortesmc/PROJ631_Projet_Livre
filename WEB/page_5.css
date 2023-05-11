@@ -11,7 +11,7 @@ body{
     margin-bottom: 40px;
     padding: 10px;
     text-align: center;
-    width: 400px;
+    width: 450px;
     background-color:rgb(241, 178, 133);
     border-radius: 10px;
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
@@ -33,7 +33,11 @@ body{
 }
 
 .form_el{
-    margin : 5px;
+    /* margin : 5px; */
+}
+
+.form_lign_input {
+    margin-left: 5px;
 }
 
 label {
@@ -45,6 +49,7 @@ label {
     display: flex;
     justify-content: space-between;
     padding-right: 0px;
+    margin-bottom: 5px;
 }
 
 .ligne label{

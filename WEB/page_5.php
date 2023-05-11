@@ -32,20 +32,20 @@
             <label id="title">Creation d'un compte</label><br>
             <div id = "ligns">
                 <div class="ligne">
-                    <label for="username" class="form_el">Username</label><br>
-                    <input type="text" id="username" name="username" class="form_el"><br>
+                    <label for="username" class="form_el">Username</label>
+                    <input type="text" id="username" name="username" class="form_el form_lign_input">
                 </div>
                 <div class="ligne">
-                    <label for="name" class="form_el">Nom</label><br>
-                    <input type="text" id="name" name="name" class="form_el"><br>
+                    <label for="name" class="form_el">Nom</label>
+                    <input type="text" id="name" name="name" class="form_el form_lign_input">
                 </div>
                 <div class="ligne">
-                    <label for="prenom" class="form_el">Prénom</label><br>
-                    <input type="text" id="prenom" name="prenom" class="form_el"><br>
+                    <label for="prenom" class="form_el">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" class="form_el form_lign_input">
                 </div>
                 <div class="ligne">
-                    <label for="mdp" class="form_el">Mot de passe</label><br>
-                    <input type="password" id="mdp" name="mdp" class="form_el"><br>
+                    <label for="mdp" class="form_el">Mot de passe</label>
+                    <input type="password" id="mdp" name="mdp" class="form_el form_lign_input">
                 </div>
             </div>
             <input type="hidden" name="page" value="5">
