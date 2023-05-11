@@ -19,6 +19,7 @@ public class Main {
 //        ToolsBDD.insertGenreBDD(conn, "SUPER GENRE");
 
         new MainManagementGUI();
+        new updateLivreGUI() ;
 
     }
 
