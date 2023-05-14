@@ -8,6 +8,7 @@ h1{
     font-weight: bold;
     text-decoration: none;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 h2{
@@ -29,23 +30,37 @@ h2{
     width: 50%;
 }
 
-.ligne_user {
-    display: flex;
+.content_liste_amis, .content_liste_user{
+    display:flex; 
     flex-direction: column; 
-    /*justify-content: left; 
-    align-items: left;*/
+    justify-content: center; 
+    align-items: center;
+} 
+.ligne_users, .ligne_amis {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.ligne_user span {
-    display: block;
+.ligne_users label, .ligne_amis label{
+    font-size: 20px;
+    word-break: break-all;
+    display: inline-block;
+    margin-right: 20px;
+    max-width: 150px; 
 }
 
-.ligne_user input {
-    display: block;
+.ligne_users input, .ligne_amis input {
+    font-size: 20px;
+    padding: 10px;
+    box-shadow: 0px 3px 4px 1px rgb(144, 61, 31);
+    color:rgb(144, 61, 31);
+    background-color: rgb(255, 235, 205);
+    border: 0px;
+    border-radius: 30px;
 }
 
 .liste_amis {
-    /* margin-left: 5%; */
     width: 50%;
 }
 
@@ -54,6 +69,18 @@ h2{
     line-height: 1.5;
 }
 
+.content_liste_amis{
+    border-left: 2px solid rgb(144, 61, 31);
+}
+
+.ajout_liste{
+    margin-left: 20px;
+    padding: 10px;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 5%;
+    font-size:medium;
+    text-align: center;
+}
 
 
 

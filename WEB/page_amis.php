@@ -1,3 +1,14 @@
+<?php
+    if ((isset($_POST["add_friend"]))){
+        $idfriend=$_GET["amis"];
+        $user=$_GET["user"];
+        $dark=$_GET["dark"];
+        $sql="INSERT INTO isfriend (idFriend1,idFriend2) VALUES ((SELECT idUser FROM utilisateur WHERE username='$user'),$idfriend)";
+        mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+        header('Location: main_page.php?dark='.$dark.'&page=amis&user='.$user.'&amis=home');
+        
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,20 +37,6 @@
     
     <title>Document</title>
 </head>
-
-<?php
-    if ((isset($_POST["add_friend"]))){
-        $idfriend=$_GET["amis"];
-        $sql="INSERT INTO isfriend (idFriend1,idFriend2) VALUES ((SELECT idUser FROM utilisateur WHERE username='$user'),$idfriend)";
-        mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
-        header('Location: main_page.php?dark='.$dark.'&page=amis&user='.$user.'&amis=home');
-    }
-?>
-
-
-
-
-
 
 <body>
 <?php
