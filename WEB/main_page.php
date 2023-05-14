@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
         if(isset($_GET['dark'])){
-            if ($_GET['dark']=="true"){
+            if ($_GET['dark']=='true'){
                 echo " <link rel='stylesheet' href='DarkMode/main_page_dark.css' />";
+                $dark='true';
             }
             else{
                 echo "<link rel='stylesheet' href='main_page.css' />";
+                $dark='false';
             }
         }
         else {
+            header('Location: main_page.php?dark=false');
             echo "<link rel='stylesheet' href='main_page.css' />";
+            $dark='false';
         }
     ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -55,12 +59,12 @@
                 $query_string = http_build_query(array('user' => $username));
 
                 // Redirection vers la nouvelle URL avec l'information en GET
-                header('Location: main_page.php?dark=$dark&page=0&' . $query_string);
+                header('Location: main_page.php?dark='.$dark.'&page=0&' . $query_string);
                 exit();
 
                 }
                 else{
-                    header('Location: main_page.php?dark=$dark&page=5&compte=erreur');
+                    header('Location: main_page.php?dark='.$dark.'&page=5&compte=erreur');
                 }                
         }
     }
@@ -73,6 +77,7 @@
                 // Insérer les données dans la base de données
                 $username = $_POST['username'];
                 $mdp = $_POST['mdp'];
+                $dark=$_GET["dark"];
                 // Code pour insérer les données dans la base de données ici
 
                 $sql = "SELECT * FROM utilisateur WHERE username='$username' AND password='$mdp'";
@@ -85,17 +90,17 @@
                 }
 
                 if (($user==null)&&($pasword==null)){
-                    header('Location: main_page.php?dark=$dark&page=4&compte=erreur');
+                    header('Location: main_page.php?dark='.$dark.'&page=4&compte=erreur');
                 }
                 else{
                     // Génération de la chaîne de requête GET
                     $query_string = http_build_query(array('user' => $user));
 
                     // Redirection vers la nouvelle URL avec l'information en GET
-                    header('Location: main_page.php?dark=$dark&page=0&' . $query_string);
+                    header('Location: main_page.php?dark='.$dark.'&page=0&' . $query_string);
                 }
             }else{
-                header('Location: main_page.php?dark=$dark&page=4&compte=erreur');
+                header('Location: main_page.php?dark='.$dark.'&page=4&compte=erreur');
             }                
         }
     }
@@ -148,7 +153,7 @@
                 
             echo "<div>";
                 echo "
-                        <form method='post' action='?dark=$dark&page=3&user=$user' class='form_recherche'>
+                        <form method='POST' action='?dark=$dark&page=3&user=$user' class='form_recherche'>
                             <div class='recherche'>
                             <input type='text' name='search' placeholder='Rechercher...' class='recherche'>
                                 <button type='submit'>
@@ -166,7 +171,7 @@
                     parse_str($queryString, $params);
                     $params['dark'] = 'true';
                     $newQueryString = http_build_query($params);
-                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >◐</a></div> \n";
                 }
                 else{
                     // Récupérer la chaîne de requête de l'URL actuelle
@@ -174,7 +179,7 @@
                     parse_str($queryString, $params);
                     $params['dark'] = 'false';
                     $newQueryString = http_build_query($params);
-                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                    echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >◑</a></div> \n";
                 }
             echo "</div>";
             }
@@ -213,14 +218,14 @@
                 
             echo "<div >";
                     echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=4\" class=\"btn_menu $encours[5]\">Sign in</a></div> \n"; 
-                    echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=5\" class=\"btn_menu $encours[6]\">sign up</a></div> \n"; 
+                    echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=5\" class=\"btn_menu $encours[6]\">Sign up</a></div> \n"; 
                     if ($_GET['dark']=="false"){
                         // Récupérer la chaîne de requête de l'URL actuelle
                         $queryString = $_SERVER['QUERY_STRING'];
                         parse_str($queryString, $params);
                         $params['dark'] = 'true';
                         $newQueryString = http_build_query($params);
-                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >◐</a></div> \n";
                     }
                     else{
                         // Récupérer la chaîne de requête de l'URL actuelle
@@ -228,7 +233,7 @@
                         parse_str($queryString, $params);
                         $params['dark'] = 'false';
                         $newQueryString = http_build_query($params);
-                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >dark</a></div> \n";
+                        echo "<div><a href=\"?$newQueryString\" class=\"btn_menu $encours[5]\" >◑</a></div> \n";
                     }
             echo "</div>";
             
@@ -237,7 +242,7 @@
             ?>
         </div>
     </header>
-    <div>
+    <div class='principal'>
         <?php
             if( file_exists("page_".$page.".php") ){ 
                 include("page_".$page.".php");
@@ -252,7 +257,7 @@
                 if (isset($_GET["user"])){
                     $user=$_GET["user"];
                     echo"<a class='link-1' href='?dark=$dark&page=0&user=$user'>Home</a>";
-                    echo"<a href='?dark=$dark&page=2&user=$user'>Bilio</a>";
+                    echo"<a href='?dark=$dark&page=2&user=$user'>Biblio</a>";
                     echo"<a href='?dark=$dark&page=6&user=$user'>$user</a>";
                 }else{
                     echo"<a class='link-1' href='?dark=$dark&page=0'>Home</a>";

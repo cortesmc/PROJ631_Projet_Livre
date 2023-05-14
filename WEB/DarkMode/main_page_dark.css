@@ -1,3 +1,8 @@
+.principal{
+  min-height: 100%;
+  margin-bottom: 50vh;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -39,7 +44,7 @@ header{
 }
 
 .cliquable_avec_hover :hover{
-    background-color: rgb(154, 49, 126);
+    background-color: rgb(142, 49, 154);
 }
 
 .cliquable_avec_hover {
@@ -149,7 +154,6 @@ input.recherche {
   text-align: left;
   font: normal 16px sans-serif;
   padding: 20px 50px;
-  margin-top: 300px;
 }
 
 .footer-distributed .footer-left p {

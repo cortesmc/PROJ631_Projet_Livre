@@ -27,7 +27,7 @@
 </head>
 <body>
     <?php $user=$_GET["user"] ;
-    echo"<H1>La bibliotéque de $user</H1>";
+    echo"<H1>La bibliothèque de $user</H1>";
     ?>
     
 	<div class="galerie">
