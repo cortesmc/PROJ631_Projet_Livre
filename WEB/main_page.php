@@ -50,10 +50,10 @@
                 $prenom = $_POST['prenom'];
                 $mdp = $_POST['mdp'];
                 // Code pour insérer les données dans la base de données ici
-                $sql="SELECT * FROM utilisateur WHERE username=$username";
+                $sql="SELECT * FROM utilisateur WHERE username='$username'";
                 $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
 
-                if (mysqli_num_rows($result) > 0){
+                if (!mysqli_num_rows($result) > 0){
                     $sql = "INSERT INTO utilisateur (username,lastname,firstname,password) VALUES ('$username','$name','$prenom','$mdp')";
                     
                     mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error($conn)."\n".$sql);
