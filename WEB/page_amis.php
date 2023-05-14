@@ -8,6 +8,17 @@
         header('Location: main_page.php?dark='.$dark.'&page=amis&user='.$user.'&amis=home');
         
     }
+
+    if ((isset($_POST["remove_friend"]))){
+        $idfriend=$_GET["amis"];
+        $user=$_GET["user"];
+        $dark=$_GET["dark"];
+        $sql="DELETE FROM isfriend WHERE idFriend1=(SELECT idUser FROM utilisateur WHERE username='$user') AND idFriend2='$idfriend'";
+        mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+        header('Location: main_page.php?dark='.$dark.'&page=amis&user='.$user.'&amis=home');
+        
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -52,9 +63,17 @@ if ($_GET["amis"]=='home'){
                     $username=$row["username"];
                     echo "<div class='ligne_users'>";
                     echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'>
-                    <label>$username</label>
-                    <input type='submit' name='add_friend' class='aujout_liste' value='Add User'></form>
-                    </div>";
+                    <label>$username</label>";
+                    
+                    $sql2="SELECT * FROM isfriend WHERE idFriend1=(SELECT idUser FROM utilisateur WHERE username='$user') AND idFriend2='$id'";
+                    $result2 = mysqli_query($conn, $sql2) or die("Requête invalide: ". mysqli_error()."\n".$sql2);
+                    if (!mysqli_num_rows($result2) > 0){
+                        echo"<input type='submit' name='add_friend' class='aujout_liste' value='Add User'></form>";
+                    }
+                    else{
+                        echo"<input type='submit' name='remove_friend' class='aujout_liste' value='Remove User'></form>";
+                    }
+                    echo"</div>";
                 }
                 
             echo"</div>
@@ -84,7 +103,12 @@ if ($_GET["amis"]=='home'){
 }
 else{
     $friend=$_GET["amis"] ;
-    echo"<H1>La bibliothèque de $friend</H1>
+    $sql="SELECT username FROM utilisateur WHERE idUSer=$friend";
+    $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+    while ($row = mysqli_fetch_assoc($result)){
+        $namefriend=$row["username"];
+    }
+    echo"<H1>La bibliothèque de $namefriend</H1>
     
 	<div class='galerie'>";
             $sql="SELECT * FROM book JOIN own ON book.idBook= own.idBook JOIN utilisateur ON utilisateur.idUser=own.idUser WHERE utilisateur.idUser='$friend'";

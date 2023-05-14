@@ -69,8 +69,8 @@ h2{
     line-height: 1.5;
 }
 
-.content_liste_amis{
-    border-left: 2px solid rgb(144, 61, 31);
+.content_liste_user{
+    border-right: 2px solid rgb(144, 61, 31);
 }
 
 .ajout_liste{
