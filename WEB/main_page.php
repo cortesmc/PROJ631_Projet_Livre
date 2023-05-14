@@ -50,22 +50,29 @@
                 $prenom = $_POST['prenom'];
                 $mdp = $_POST['mdp'];
                 // Code pour insérer les données dans la base de données ici
+                $sql="SELECT * FROM utilisateur WHERE username=$username";
+                $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
 
-                $sql = "INSERT INTO utilisateur (username,lastname,firstname,password) VALUES ('$username','$name','$prenom','$mdp')";
+                if (mysqli_num_rows($result) > 0){
+                    $sql = "INSERT INTO utilisateur (username,lastname,firstname,password) VALUES ('$username','$name','$prenom','$mdp')";
                     
-                mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error($conn)."\n".$sql);
-                
-                // Génération de la chaîne de requête GET
-                $query_string = http_build_query(array('user' => $username));
-
-                // Redirection vers la nouvelle URL avec l'information en GET
-                header('Location: main_page.php?dark='.$dark.'&page=0&' . $query_string);
-                exit();
-
+                    mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error($conn)."\n".$sql);
+                    
+                    // Génération de la chaîne de requête GET
+                    $query_string = http_build_query(array('user' => $username));
+    
+                    // Redirection vers la nouvelle URL avec l'information en GET
+                    header('Location: main_page.php?dark='.$dark.'&page=0&' . $query_string);
+                    exit();
                 }
                 else{
                     header('Location: main_page.php?dark='.$dark.'&page=5&compte=erreur');
-                }                
+                }
+
+            }
+            else{
+                header('Location: main_page.php?dark='.$dark.'&page=5&compte=erreur');
+            }                
         }
     }
 ?>
@@ -149,6 +156,7 @@
                     </div> \n";   
 
                 echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=2&user=$user\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
+                echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=amis&user=$user&amis=home\" class=\"btn_menu $encours[3]\">Amis</a></div> \n";  
             echo "</div>";
                 
             echo "<div>";
@@ -202,6 +210,7 @@
                     </div> \n";   
 
                 echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=4\" class=\"btn_menu $encours[3]\">Biblio</a></div> \n";  
+                echo "<div class='cliquable_avec_hover'><a href=\"?dark=$dark&page=4\" class=\"btn_menu $encours[3]\">Amis</a></div> \n";  
             echo "</div>";
                 
             echo "<div>";
