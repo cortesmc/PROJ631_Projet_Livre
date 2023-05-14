@@ -53,8 +53,11 @@ if ($_GET["amis"]=='home'){
                 while ($row = mysqli_fetch_assoc($result)){
                     $id=$row["idUser"];
                     $username=$row["username"];
-                    echo "$username";
-                    echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'><input type='submit' name='add_friend' class='aujout_liste' value='Add User'></form>";
+                    echo "<div class='ligne_users'>";
+                    echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'>
+                    <label>$username</label>
+                    <input type='submit' name='add_friend' class='aujout_liste' value='Add User'></form>
+                    </div>";
                 }
                 
             echo"</div>
@@ -71,8 +74,11 @@ if ($_GET["amis"]=='home'){
                     while ($row2 = mysqli_fetch_assoc($result2)){
                         $id=$row2["idUser"];
                         $username=$row2["username"];
-                        echo "$username";
-                        echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Voir biblio'></form>";
+                        echo "<div class='ligne_amis'>";
+                        echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'>
+                        <label>$username</label>
+                        <input type='submit' name='submit' class='aujout_liste' value='Voir biblio'></form>
+                        </div>";
                     }
                 }               
             echo"</div>
