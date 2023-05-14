@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS Own;
 DROP TABLE IF EXISTS Genre;
 DROP TABLE IF EXISTS Belong;
 DROP TABLE IF EXISTS Review;
-
+DROP TABLE IF EXISTS IsFriend;
 /* ---------------- CREATE TABLE */
 
 CREATE TABLE Book (
@@ -74,6 +74,14 @@ CREATE TABLE Review (
     CONSTRAINT FK_REVIEW_USER FOREIGN KEY (idUser) REFERENCES Utilisateur(idUser)
 ) ;
 
+
+CREATE TABLE IsFriend (
+  idFriend1 INT NOT NULL,
+  idFriend2 INT NOT NULL,
+  PRIMARY KEY (idFriend1, idFriend2),
+  FOREIGN KEY (idFriend1) REFERENCES Utilisateur(idUser),
+  FOREIGN KEY (idFriend2) REFERENCES Utilisateur(idUser)
+);
 /* ---------------- FOREIGN KEY */
 
 ALTER TABLE IsWrite ADD FOREIGN KEY (idAuthor) REFERENCES Author(idAuthor);
@@ -88,7 +96,10 @@ ALTER TABLE Belong ADD FOREIGN KEY (idBook) REFERENCES Book(idBook);
 
 ALTER TABLE Belong ADD FOREIGN KEY (idGenre) REFERENCES Genre(idGenre);
 
-ALTER TABLE Review ADD FOREIGN KEY (idBook) REFERENCES Book(IdBook);
+ALTER TABLE Review ADD FOREIGN KEY (idBook) REFERENCES Book(idBook);
 
-ALTER TABLE Review ADD FOREIGN KEY (idUser) REFERENCES Utilisateur(IdUser);
+ALTER TABLE Review ADD FOREIGN KEY (idUser) REFERENCES Utilisateur(idUser);
 
+ALTER TABLE IsFriend ADD FOREIGN KEY (idFriend1) REFERENCES Utilisateur(idUser);
+
+ALTER TABLE IsFriend ADD FOREIGN KEY (idFriend2) REFERENCES Utilisateur(idUser);
