@@ -26,6 +26,21 @@
     
     <title>Document</title>
 </head>
+
+<?php
+    if ((isset($_POST["add_friend"]))){
+        $idfriend=$_GET["amis"];
+        $sql="INSERT INTO isfriend (idFriend1,idFriend2) VALUES ((SELECT idUser FROM utilisateur WHERE username='$user'),$idfriend)";
+        mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+        header('Location: main_page.php?dark='.$dark.'&page=amis&user='.$user.'&amis=home');
+    }
+?>
+
+
+
+
+
+
 <body>
 <?php
 if ($_GET["amis"]=='home'){
@@ -33,28 +48,34 @@ if ($_GET["amis"]=='home'){
 		<div class='liste_user'>
             <H1>Utilisateurs</H1>
             <div class='content_liste_user'>";
-                $sql="SELECT idUser,username FROM utilisateur";
+                $sql="SELECT idUser,username FROM utilisateur WHERE username!='$user'";
                 $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
                 while ($row = mysqli_fetch_assoc($result)){
                     $id=$row["idUser"];
                     $username=$row["username"];
-                    echo "$id | $username";
+                    echo "$username";
+                    echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'><input type='submit' name='add_friend' class='aujout_liste' value='Add User'></form>";
                 }
-                echo"<form action='?dark=$dark&page=amis&user=$user&amis=home' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Add User'></form>
-            </div>
+                
+            echo"</div>
 		</div>
 		<div class='liste_amis'>
             <H1>Mes amis</H1>
             <div class='content_liste_amis'>";
-                $sql="SELECT idUser,username FROM utilisateur";
+                $sql="SELECT idFriend2 FROM utilisateur JOIN isfriend ON utilisateur.idUser=isfriend.idFriend1 WHERE utilisateur.username='$user'";
                 $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
                 while ($row = mysqli_fetch_assoc($result)){
-                    $id=$row["idUser"];
-                    $username=$row["username"];
-                    echo "$id | $username";
-                }
-                echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Voir biblio'></form>
-            </div>
+                    $id2=$row["idFriend2"];
+                    $sql2="SELECT * FROM utilisateur WHERE idUser='$id2'";
+                    $result2 = mysqli_query($conn, $sql2) or die("Requête invalide: ". mysqli_error()."\n".$sql2);
+                    while ($row2 = mysqli_fetch_assoc($result2)){
+                        $id=$row2["idUser"];
+                        $username=$row2["username"];
+                        echo "$username";
+                        echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'><input type='submit' name='submit' class='aujout_liste' value='Voir biblio'></form>";
+                    }
+                }               
+            echo"</div>
         </div>
 	</div>";
 }
