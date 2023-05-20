@@ -1,3 +1,17 @@
+<?php 
+    if (isset($_POST["search"])){
+        $txt=$_POST["search"] ;
+            // Récupérer la chaîne de requête de l'URL actuelle
+        $queryString = $_SERVER['QUERY_STRING'];
+        header('Location: main_page.php?'.$queryString.'&search='.$txt);
+    }
+    else{
+        $txt=$_GET["search"] ;
+    }
+    
+    echo"<H1>Recherche pour '$txt'</H1>";
+    ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,19 +40,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php 
-    if (isset($_POST["search"])){
-        $txt=$_POST["search"] ;
-            // Récupérer la chaîne de requête de l'URL actuelle
-        $queryString = $_SERVER['QUERY_STRING'];
-        header('Location: main_page.php?'.$queryString.'&search='.$txt);
-    }
-    else{
-        $txt=$_GET["search"] ;
-    }
-    
-    echo"<H1>Recherche pour '$txt'</H1>";
-    ?>
+
     
 	<div class="galerie">
         <?php   
