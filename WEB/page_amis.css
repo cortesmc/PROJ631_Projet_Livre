@@ -24,6 +24,7 @@ h2{
     width: 70%;
     max-width: 126rem;
     display: flex;
+
 }
 
 .liste_user {
@@ -37,20 +38,27 @@ h2{
     align-items: center;
 } 
 .ligne_users, .ligne_amis {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.userForm, .amisForm{
+    width:100%;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 .ligne_users label, .ligne_amis label{
     font-size: 20px;
     word-break: break-all;
-    display: inline-block;
     margin-right: 20px;
     max-width: 150px; 
 }
 
 .ligne_users input, .ligne_amis input {
+    display: flex;
     font-size: 20px;
     padding: 10px;
     box-shadow: 0px 3px 4px 1px rgb(144, 61, 31);
@@ -58,6 +66,7 @@ h2{
     background-color: rgb(255, 235, 205);
     border: 0px;
     border-radius: 30px;
+    height: 40px;
 }
 
 .liste_amis {

@@ -61,19 +61,19 @@ if ($_GET["amis"]=='home'){
                 while ($row = mysqli_fetch_assoc($result)){
                     $id=$row["idUser"];
                     $username=$row["username"];
-                    echo "<div class='ligne_users'>";
-                    echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'>
+                    echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST' class='userForm'>
+                    <div class='ligne_users'>
                     <label>$username</label>";
                     
                     $sql2="SELECT * FROM isfriend WHERE idFriend1=(SELECT idUser FROM utilisateur WHERE username='$user') AND idFriend2='$id'";
                     $result2 = mysqli_query($conn, $sql2) or die("Requête invalide: ". mysqli_error()."\n".$sql2);
                     if (!mysqli_num_rows($result2) > 0){
-                        echo"<input type='submit' name='add_friend' class='aujout_liste' value='Add User'></form>";
+                        echo"<input type='submit' name='add_friend' class='aujout_liste' value='Add User'>";
                     }
                     else{
-                        echo"<input type='submit' name='remove_friend' class='aujout_liste' value='Remove User'></form>";
+                        echo"<input type='submit' name='remove_friend' class='aujout_liste' value='Remove User'>";
                     }
-                    echo"</div>";
+                    echo"</form></div>";
                 }
                 
             echo"</div>
@@ -89,12 +89,12 @@ if ($_GET["amis"]=='home'){
                     $result2 = mysqli_query($conn, $sql2) or die("Requête invalide: ". mysqli_error()."\n".$sql2);
                     while ($row2 = mysqli_fetch_assoc($result2)){
                         $id=$row2["idUser"];
-                        $username=$row2["username"];
-                        echo "<div class='ligne_amis'>";
-                        echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST'>
+                        $username=$row2["username"];;
+                        echo"<form action='?dark=$dark&page=amis&user=$user&amis=$id' method='POST' class='amisForm'>
+                        <div class='ligne_amis'>
                         <label>$username</label>
-                        <input type='submit' name='submit' class='aujout_liste' value='Voir biblio'></form>
-                        </div>";
+                        <input type='submit' name='submit' class='aujout_liste' value='Voir biblio'>
+                        </div></form>";
                     }
                 }               
             echo"</div>
