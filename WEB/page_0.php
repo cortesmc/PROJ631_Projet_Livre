@@ -31,10 +31,10 @@
         <h1>Books for advanced readers</h1><br>
         <h3>Cadoux Lila / Carlos Cortes / Ferreira Mathieu / Lebon Mathys / Plebani Théo </h3><br>
         <h2>Description du projet :</h2><br>
-        <p>L’objectif de ce projet réalisé en PROJ631, est de travailler en collaboration par groupe de 5 regroupant plusieurs langages de programmation et technologies afin de créer une bibliothèque en ligne. 
-Cette bibliothèque doit être accessible depuis un site internet depuis lequel, les utilisateurs peuvent se connecter, ajouter des livres à leurs bibliothèques, donner des commentaires et des notes sur les livres qu’ils ont lus. Ces commentaires sont ensuite visibles par l’ensemble des autres utilisateurs.
-Sur ce site il est aussi possible d’ajouter des utilisateurs en tant qu’ami afin d’avoir accès à leur bibliothèque.
-De plus, une interface administrateur existe depuis Java, permettant d’ajouter, supprimer et modifier les différents livres de la bibliothèque.</p><br>
+        <p>L’objectif de ce projet réalisé en PROJ631, est de travailler en collaboration par groupe de 5 regroupant plusieurs langages de programmation et technologies afin de créer une bibliothèque en ligne.<br> 
+            Cette bibliothèque doit être accessible depuis un site internet depuis lequel, les utilisateurs peuvent se connecter, ajouter des livres à leurs bibliothèques, donner des commentaires et des notes sur les livres qu’ils ont lus. Ces commentaires sont ensuite visibles par l’ensemble des autres utilisateurs.<br> 
+            Sur ce site il est aussi possible d’ajouter des utilisateurs en tant qu’ami afin d’avoir accès à leur bibliothèque.<br> 
+            De plus, une interface administrateur existe depuis Java, permettant d’ajouter, supprimer et modifier les différents livres de la bibliothèque.</p><br>
         <br>
         <H2>Liens utiles :</H2>
 
