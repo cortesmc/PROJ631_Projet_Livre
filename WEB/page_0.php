@@ -31,8 +31,10 @@
         <h1>Books for advanced readers</h1><br>
         <h3>Cadoux Lila / Carlos Cortes / Ferreira Mathieu / Lebon Mathys / Plebani Théo </h3><br>
         <h2>Description du projet :</h2><br>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis accusantium quisquam facilis doloremque maxime, quis recusandae pariatur est corporis reiciendis quo asperiores harum voluptate molestiae cupiditate quidem incidunt accusamus, eaque praesentium quam in voluptatibus explicabo magnam nam. Incidunt, aliquid iste corporis aliquam officiis quasi porro sapiente similique totam tempora quo sit hic itaque ad voluptas. Nobis dicta placeat rerum eius deleniti. Labore ex adipisci debitis laudantium, soluta, alias quas sequi deserunt incidunt consequuntur accusantium. Laboriosam totam, autem eius commodi harum quis ad, consequatur perferendis ex at recusandae dolores excepturi deleniti exercitationem quaerat doloribus voluptas? Aliquam officiis asperiores eius explicabo placeat temporibus quis soluta eaque labore ipsum animi nobis culpa iste, et reiciendis tempora? Dolore velit earum corporis unde neque nulla, minima suscipit non et nemo iste accusantium, molestiae enim vero. Unde sit, odio, perspiciatis atque quae illum aliquid veniam hic ipsa quos vel facilis consequatur nam itaque saepe! Sunt aliquid enim distinctio natus, illo reprehenderit libero quisquam neque, repellat vel saepe ducimus quidem aperiam modi perspiciatis voluptas minima voluptatem fugit repudiandae explicabo architecto. Vero officiis magni qui omnis ab libero atque alias sequi ad dicta ducimus, at quod expedita? Nemo enim odit sunt beatae laborum velit ad eveniet natus est.</p>
-        <br>
+        <p>L’objectif de ce projet réalisé en PROJ631, est de travailler en collaboration par groupe de 5 regroupant plusieurs langages de programmation et technologies afin de créer une bibliothèque en ligne. 
+Cette bibliothèque doit être accessible depuis un site internet depuis lequel, les utilisateurs peuvent se connecter, ajouter des livres à leurs bibliothèques, donner des commentaires et des notes sur les livres qu’ils ont lus. Ces commentaires sont ensuite visibles par l’ensemble des autres utilisateurs.
+Sur ce site il est aussi possible d’ajouter des utilisateurs en tant qu’ami afin d’avoir accès à leur bibliothèque.
+De plus, une interface administrateur existe depuis Java, permettant d’ajouter, supprimer et modifier les différents livres de la bibliothèque.</p><br>
         <br>
         <H2>Liens utiles :</H2>
 

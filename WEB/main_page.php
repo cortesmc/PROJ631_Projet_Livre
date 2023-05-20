@@ -267,7 +267,7 @@
                     $user=$_GET["user"];
                     echo"<a class='link-1' href='?dark=$dark&page=0&user=$user'>Home</a>";
                     echo"<a href='?dark=$dark&page=2&user=$user'>Biblio</a>";
-                    echo"<a href='?dark=$dark&page=6&user=$user'>$user</a>";
+                    echo"<a href='?dark=$dark&page=0&user=$user' >$user</a>";
                 }else{
                     echo"<a class='link-1' href='?dark=$dark&page=0'>Home</a>";
                     echo"<a href='?dark=$dark&page=2'>Bilio</a>";
