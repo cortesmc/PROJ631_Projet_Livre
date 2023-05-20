@@ -159,7 +159,7 @@ h1 {
     height: 100%;
     opacity: 0;
     transition: opacity 0.3s ease;
-    background-color: rgb(255, 221, 170);
+    background-color: rgb(79, 41, 81);
     display: flex;
     justify-content: center;
     align-items: center;
